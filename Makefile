@@ -6,11 +6,11 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2017/12/16 19:54:57 by mfonteni         ###   ########.fr        #
+#    Updated: 2017/12/17 17:35:04 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = libftprintf.a
 SRC = ft_atoi.c \
 	  ft_bzero.c \
 	  ft_countdigit.c \
