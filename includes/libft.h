@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/16 19:56:01 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/18 16:57:58 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ size_t			ft_strlcat(char *dst, const char *src, size_t size);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strstr(const char *haystack, const char *needle);
-char			*ft_strnstr(const char *haystack,
-							const char *needle, size_t len);
+char			*ft_strnstr(const char *haystack, const char *needle,
+							size_t len);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *str);
@@ -89,5 +89,12 @@ char			*ft_strlowcase(char *str);
 char			*ft_strupcase(char *str);
 int				ft_sqrt(int nb);
 int				ft_factorial(int nb);
-int				printf(const char *format, ...);
+int				ft_printf(const char *format, ...);
+
+typedef struct	s_plist
+{
+	void				*arg;
+	char				*flag;
+	struct s_list	*next;
+}				t_plist;
 #endif
