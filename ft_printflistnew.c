@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 14:12:13 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/02 14:43:20 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/02 15:58:28 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_plist	*ft_printflistnew(void	*arg)
 	else
 		newlist->arg = NULL;
 	newlist->parameter = -1;
+	newlist->flag = -1;
 	newlist->width = -1;
 	newlist->precision = -1;
 	newlist->length = ft_strnew(2);
