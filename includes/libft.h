@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/02 16:53:02 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/02 17:43:19 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int				ft_printf(const char *format, ...);
 typedef struct	s_plist
 {
 	void				*arg;
-	char				flag;
+	char				*flag;
 	int					width; //minimum writen
 	int					precision; //maximum writen
 	char				*length; //conversion
