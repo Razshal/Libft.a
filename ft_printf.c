@@ -6,14 +6,12 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 15:26:34 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/18 17:53:40 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/02 13:42:26 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 #include <stdarg.h>
-
-
 
 t_printflist	parse_input(t_printflist list, const char *format, ...)
 {
@@ -22,12 +20,13 @@ t_printflist	parse_input(t_printflist list, const char *format, ...)
 	count = -1;
 	while (format[++count])
 	{
-		if (format[count] == "%" && !format[count] == "%")
+		if (format[count] == "%")
 		{
-			if (format[0] != "%")
+			if (format[count + 1] == "%" && ++count)
+				ft_putchar('%');
+			else if (ft_isdigit(format[count + 1]))
 
 		}
-
 	}
 }
 
