@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/02 17:43:19 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/02 19:07:45 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ typedef struct	s_plist
 t_plist			*ft_printflistnew(void *arg);
 int				ft_is_printf_flag(char c);
 int				ft_is_printf_length(char c);
+int				ft_is_printf_type(char c);
 void			ft_printflstadd(t_plist **alst, t_plist *new);
 #endif
