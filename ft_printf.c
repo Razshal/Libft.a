@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 15:26:34 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/03 15:07:10 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/03 18:21:50 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int		parse_flags(const char *format, int count, t_plist *list)
 	return (count);
 }
 
-int		parse_one(t_plist **list, const char *format)
+static int		parse_one(t_plist **list, const char *format)
 {
 	int count;
 	t_plist *current;
@@ -80,21 +80,29 @@ int		parse_one(t_plist **list, const char *format)
 	ft_printflstadd(list, current);
 	return (count ? count + 1 : count);
 }
-/*
-static t_plist	*parse_input(t_plist *list, const char *format, ...)
+
+t_plist		*parse_input(t_plist **list, const char *format, ...)
 {
 	int		count;
+	int		cutcount;
+	t_plist	*local_copy;
 
 	count = -1;
+	cutcount = 0;
+	local_copy = *list;
 	while (format[++count])
 	{
-		if (format[count] == '%')
-			parse_one(&list, &format[++count]);
+		if (format[count] == '%' || format[count] == '\0')
+		{
+			ft_printfaddstr(local_copy, format, cutcount, count++);
+			count = count + parse_one(&local_copy, &format[count]);
+			cutcount = count;
+		}
 	}
-	return (list);
+	return (*list);
 }
-
-int		ft_printf(const char *format, ...)
+/*
+int			ft_printf(const char *format, ...)
 {
 	int written;
 	t_plist *instructions_list;
@@ -102,4 +110,5 @@ int		ft_printf(const char *format, ...)
 	written = 0;
 //	parse_input(instructions_list, format, args[...]);
 
-}*/
+}
+*/
