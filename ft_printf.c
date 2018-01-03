@@ -6,51 +6,55 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 15:26:34 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/02 20:05:10 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/03 13:18:33 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 #include <stdarg.h>
 
-static int		assign_digit(const char *format, int count, int assign)
+static int		assign_digit(const char *format, int count, t_plist *list)
 {
-	assign = ft_atoi(&format[count]);
+	if (format[count - 1] == '.')
+		list->precision = ft_atoi(&format[count]);
+	else
+		list->width = ft_atoi(&format[count]);
 	while (format[count] && ft_isdigit(format[count]))
 		count++;
 	return (count);
 }
 
-static int		assign_length(const char *format, int count, char *str)
+static int		assign_length(const char *format, int count, t_plist *list)
 {
 	char c;
-	str[0] = format[count];
-	if (format[count] && ft_is_printf_length(format[count + 1])
-			&& (c = format[count + 1]) && (c == 'l' || c == 'h'))
+	list->length[0] = format[count++];
+	if (ft_is_printf_length(format[count])
+			&& (c = format[count]) && (c == 'l' || c == 'h')
+			&& format[count - 1] == c)
 		{
-			str[1] = c;
+			list->length[1] = c;
 			count++;
 		}
 	else
-		str[1] = '\0';
+		list->length[1] = '\0';
 	return (count);
 }
 
 static int		parse_flags(const char *format, int count, t_plist *list)
 {
+	int lcount;
+
+	lcount = 0;
 	while (ft_is_printf_flag(format[count]))
 	{
 		if (!ft_strchr(list->flag, format[count]))
-		{
-			list->flag[0] = format[count];
-			list->flag++;
-		}
+			list->flag[lcount++] = format[count];
 		count++;
 	}
 	return (count);
 }
 
-int		parse_one(t_plist *list, const char *format)
+static t_plist	*parse_one(t_plist *list, const char *format)
 {
 	int count;
 	t_plist *current;
@@ -59,18 +63,13 @@ int		parse_one(t_plist *list, const char *format)
 	current = ft_printflistnew(NULL);
 	if (ft_is_printf_flag(format[count]))
 		count = parse_flags(format, count, current);
-	ft_putendl("ici");
 	if (ft_isdigit(format[count]))
-		count = assign_digit(format, count, current->width);
+		count = assign_digit(format, count, current);
 	while (format[count] && format[count] == '.' && format[count + 1]
 			&& ft_isdigit(format[++count]))
-		count = assign_digit(format, count, current->precision);
-	ft_putendl("the line just under is segfaulting, bouuh !");
+		count = assign_digit(format, count, current);
 	while (format[count] && ft_is_printf_length(format[count]))
-	{
-		ft_putendl("the cake is a lie");
-		count = assign_length(format, count, current->length);
-	}
+		count = assign_length(format, count, current);
 	while (format[count] && !ft_is_printf_type(format[count]))
 		count++;
 	if (ft_is_printf_type(format[count]))
@@ -78,8 +77,9 @@ int		parse_one(t_plist *list, const char *format)
 		current->type = format[count];
 		current->arg = NULL;
 	}
-	ft_printflstadd(&list, current);
-	return (count);
+	list = NULL;
+	//ft_printflstadd(&list, current);
+	return (current);
 }
 /*
 static t_plist	*parse_input(t_plist *list, const char *format, ...)
