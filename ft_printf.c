@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 15:26:34 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/04 13:39:10 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/04 16:03:01 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@
 static int		assign_digit(const char *format, int count, t_plist *list)
 {
 	if (format[count - 1] == '.')
-		list->precision = ft_atoi(&format[count]);
+	{
+		if (!ft_isdigit(format[count]))
+			list->precision = 1;
+		else
+			list->precision = ft_atoi(&format[count]);
+	}
 	else
 		list->width = ft_atoi(&format[count]);
 	while (format[count] && ft_isdigit(format[count]))
@@ -65,9 +70,9 @@ static int		parse_one(t_plist **list, const char *format)
 		count = parse_flags(format, count, current);
 	if (ft_isdigit(format[count]))
 		count = assign_digit(format, count, current);
-	while (format[count] && format[count] == '.' && format[count + 1]
-			&& ft_isdigit(format[++count]))
-		count = assign_digit(format, count, current);
+	while ((format[count] && format[count] == '.' && format[count + 1]
+			&& ft_isdigit(format[count + 1])) || format[count] == '.')
+		count = assign_digit(format, ++count, current);
 	while (format[count] && ft_is_printf_length(format[count]))
 		count = assign_length(format, count, current);
 	while (format[count] && !ft_is_printf_type(format[count]))
@@ -78,30 +83,33 @@ static int		parse_one(t_plist **list, const char *format)
 		current->arg = NULL;
 	}
 	ft_printflstadd(list, current);
-	return (count ? count + 1 : count);
+	return (count);
 }
 
-t_plist		*parse_input(t_plist **list, const char *format, ...)
+t_plist		*parse_input(const char *format, ...)
 {
 	int		count;
 	int		cutcount;
-	t_plist	*local_copy;
+	t_plist	*local;
 
 	count = -1;
 	cutcount = 0;
-	local_copy = *list;
+	local = NULL;
 	while (format[++count])
 	{
 		if (format[count] == '%' || format[count] == '\0')
 		{
-			printf("cutcount: %d\n", cutcount);
-			ft_printfaddstr(local_copy, format, cutcount, count++);
-			count = count + parse_one(&local_copy, &format[count]);
+			if (count > 0)
+			{
+				ft_printflstadd(&local,
+						ft_printflststr(format, cutcount, count));
+			}
+			count++;
+			count = count + parse_one(&local, &format[count]);
 			cutcount = count;
 		}
 	}
-	*list = local_copy;
-	return (*list);
+	return (local);
 }
 /*
 int			ft_printf(const char *format, ...)

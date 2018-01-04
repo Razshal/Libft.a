@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/04 13:12:58 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/04 15:44:06 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,6 @@ int				ft_is_printf_flag(char c);
 int				ft_is_printf_length(char c);
 int				ft_is_printf_type(char c);
 void			ft_printflstadd(t_plist **alst, t_plist *new);
-void			ft_printfaddstr(t_plist *list, const char *str,
-								int start, int end);
+t_plist			*ft_printflststr(const char *str, int start, int end);
+t_plist			*parse_input(const char *format, ...);
 #endif
