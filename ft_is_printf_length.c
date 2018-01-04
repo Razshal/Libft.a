@@ -6,13 +6,13 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 16:42:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/03 13:17:32 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/04 17:01:59 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int ft_is_printf_length(char c)
 {
-	if (c == 'l' || c == 'h' || c == 'L' || c == 'z' || c == 'j' || c == 't')
+	if (c == 'l' || c == 'h' || c == 'z' || c == 'j')
 		return (1);
-	return(0);
+	return (0);
 }
