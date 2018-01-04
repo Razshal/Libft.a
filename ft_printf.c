@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 15:26:34 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/03 18:21:50 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/04 13:39:10 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,13 @@ t_plist		*parse_input(t_plist **list, const char *format, ...)
 	{
 		if (format[count] == '%' || format[count] == '\0')
 		{
+			printf("cutcount: %d\n", cutcount);
 			ft_printfaddstr(local_copy, format, cutcount, count++);
 			count = count + parse_one(&local_copy, &format[count]);
 			cutcount = count;
 		}
 	}
+	*list = local_copy;
 	return (*list);
 }
 /*
