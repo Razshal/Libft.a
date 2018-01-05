@@ -6,12 +6,12 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/04 16:38:37 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/05 19:33:17 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
-/*
+
 int			ft_printf(const char *format, ...)
 {
 	int written;
@@ -22,4 +22,4 @@ int			ft_printf(const char *format, ...)
 
 	return (written);
 }
-*/
+
