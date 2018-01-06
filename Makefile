@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2017/12/17 17:35:04 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/01/06 12:13:39 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,17 @@ SRC = ft_atoi.c \
 	  ft_strupcase.c \
 	  ft_tolower.c \
 	  ft_toupper.c \
-	  ft_printf.c
+	  ft_printf.c \
+	  ft_is_printf_flag.c \
+	  ft_printf.c \
+	  ft_printflstadd.c \
+	  ft_is_printf_length.c \
+	  ft_printfaddstr.c \
+	  ft_printfparser.c \
+	  ft_is_printf_type.c \
+	  ft_printflistnew.c \
+	  ft_putwchar.c \
+	  ft_putwstr.c
 
 OBJ = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror
