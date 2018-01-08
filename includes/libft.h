@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/08 15:18:53 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/08 18:27:32 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,10 @@ typedef struct	s_plist
 {
 	void				*arg;
 	char				*flag;
-	int					width; //minimum writen
-	int					precision; //maximum writen
-	char				*length; //conversion
-	char				type; //type of arg
+	int					width;
+	int					precision;
+	char				*length;
+	char				type;
 	int					isrealarg;
 	struct s_plist	*next;
 }				t_plist;
@@ -112,7 +112,6 @@ void			ft_printflstadd(t_plist **alst, t_plist *new);
 t_plist			*ft_printflststr(const char *str, int start, int end);
 t_plist			*parse_input(const char *format);
 int				ft_putwchar(unsigned int c);
-void			ft_putwstr(char const *s);
+void			ft_putwstr(unsigned char *s);
 
-#define TYPE(c) (c
 #endif

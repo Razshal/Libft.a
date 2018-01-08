@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/05 12:46:04 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/06 14:49:33 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/08 17:35:07 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_putwchar(unsigned int c)
 	bytes = ft_strnew(6);
 	bytesleft = ft_getbyteslength(c);
 	length = bytesleft;
-	modifier = 62;
+	modifier = 63;
 	if (c <= 127)
 		return (write(1, &c, 1));
 	if (bytesleft > 6)
@@ -47,7 +47,7 @@ int	ft_putwchar(unsigned int c)
 	{
 		bytes[bytesleft] = 128 | (c & 63);
 		c = (c >> 6);
-		modifier = modifier / 2;
+		modifier = modifier >> 1;
 	}
 	bytes[0] = (192 + (16 * (length == 2 ? 0 : length - 1)) | (c & modifier));
 	return (write(1, bytes, length));

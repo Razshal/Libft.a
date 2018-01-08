@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/08 17:08:18 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/08 17:38:13 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,17 @@ static void	fillarglist(t_plist *list, va_list ap)
 
 static void	chars_controller(t_plist *list)
 {
-	if (list->type == 'c' && !(list->length[0] == 'l') && !(list->length[1]))
+	if (list->type == 'c' && (!(list->length[0] == 'l') || (list->length[1])))
 		ft_putchar((char)(list->arg));
-	if ((list->type == 'C') ||
-			(list->type == 'c' && list->length[0] == 'l' && list->length[1]))
+	if ((list->type == 'C') || (list->type == 'c'
+				&& list->length[0] == 'l' && !(list->length[1])))
 		ft_putwchar((unsigned char)(list->arg));
+	if (list->type == 's' && (!(list->length[0] == 'l') || (list->length[1])))
+		ft_putstr((char*)(list->arg));
+	if ((list->type == 'S') || (list->type == 's'
+				&& list->length[0] == 'l' && !(list->length[1])))
+		ft_putwstr((unsigned char*)(list->arg));
+
 
 
 }
