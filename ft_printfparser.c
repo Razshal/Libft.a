@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 15:26:34 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/04 18:13:19 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/08 15:18:57 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ static int		parse_one(t_plist **list, const char *format)
 	if (ft_is_printf_type(format[count]))
 	{
 		current->type = format[count++];
-		current->arg = NULL;
+		current->isrealarg = 1;
 	}
 	ft_printflstadd(list, current);
 	return (count);
 }
 
-t_plist		*parse_input(const char *format, ...)
+t_plist		*parse_input(const char *format)
 {
 	int		count;
 	int		cutcount;
