@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:03:28 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 15:14:20 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 15:26:28 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_max_itoabase(int base, intmax_t n, int isupper)
 	char	*tab;
 
 	checkneg = 0;
-	size = ft_max_countdigit(n, base) - 1;
+	size = ft_max_countdigit_base(n, base) - 1;
 	tab = base_table(base, isupper);
 	if (n < 0)
 	{
@@ -55,7 +55,6 @@ char	*ft_max_itoabase(int base, intmax_t n, int isupper)
 	while (str && n)
 	{
 		str[--size] = tab[n % base];
-		printf("%csize:%d\n", str[size], size);
 		n = n / base;
 	}
 	return (str);
@@ -63,6 +62,6 @@ char	*ft_max_itoabase(int base, intmax_t n, int isupper)
 
 int main(void)
 {
-	char *str = ft_max_itoabase(2, -25, 0);
-	printf("%s", str);
+	char *str = ft_max_itoabase(16, 2540, 1);
+	printf("%s\n", str);
 }
