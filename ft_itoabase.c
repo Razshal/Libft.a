@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:03:28 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 15:26:28 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 15:39:10 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,4 @@ char	*ft_max_itoabase(int base, intmax_t n, int isupper)
 		n = n / base;
 	}
 	return (str);
-}
-
-int main(void)
-{
-	char *str = ft_max_itoabase(16, 2540, 1);
-	printf("%s\n", str);
 }
