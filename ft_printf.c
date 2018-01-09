@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 17:21:06 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 17:48:31 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ static int	chars_controller(t_plist *list)
 static int	number_controller(t_plist *list)
 {
 	char *basestr;
-	if ((list->type == 'i' && ! || list->type == 'd')
+	if ((list->type == 'i' || list->type == 'd')  && !ft_check_lconv(list))
 		basestr = ft_max_itoabase(10, (int)(list->arg), 0);
-	if (list->type = 'D' || list
+	if (list->type == 'D' ||
+			((list->type == 'd' || list->type == 'i') && ft_check_lconv(list)))
 	return (chars_controller(list));
 }
 

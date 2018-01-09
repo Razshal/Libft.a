@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/01/09 17:12:12 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/01/09 17:48:29 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,12 +80,10 @@ SRC = ft_atoi.c \
 	  ft_tolower.c \
 	  ft_toupper.c \
 	  ft_printf.c \
-	  $(PRINTFUNC)ft_is_printf_flag.c \
 	  $(PRINTFUNC)ft_printflstadd.c \
-	  $(PRINTFUNC)ft_is_printf_length.c \
 	  $(PRINTFUNC)ft_printfaddstr.c \
 	  $(PRINTFUNC)ft_printfparser.c \
-	  $(PRINTFUNC)ft_is_printf_type.c \
+	  $(PRINTFUNC)ft_printf_checks.c \
 	  $(PRINTFUNC)ft_printflistnew.c \
 	  ft_putwchar.c \
 	  ft_putwstr.c
