@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 19:51:21 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 20:03:08 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ static t_plist	*number_controller(t_plist *list)
 		list->arg = (void*)ft_printf_type_unsigned(list);
 	list->type = 's';
 	return (list);
+}
+
+static int flags_precision(t_plist *list)
+{
+	int leftalign;
+
+	leftalign = (ft_strchr(list->flag, '-') ? 1 : 0);
 }
 
 static int	print_controller(t_plist *list)
