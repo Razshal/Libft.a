@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:03:28 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 13:06:14 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 15:14:20 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 char	*base_table(int base, int isupper)
 {
 	char *tab;
+	int count;
 
 	tab = ft_strnew(base + 1);
-	while (base > 10)
+	count = 0;
+	tab[0] = count++ + '0';
+	while (count < 10 && count <= base)
 	{
-		tab[base] = base + (isupper ? 55 : 87);
-		base--;
+		tab[count] = count + '0';
+		count++;
 	}
-	while (base < 10 && base >= 0)
+	while (count >= 10 && count < base)
 	{
-		tab[base] = base + '0';
-		base--;
+		tab[count] = count - 10 + (isupper ? 'A' : 'a');
+		count++;
 	}
-	printf("itab:%s", tab);
 	return (tab);
 }
 
@@ -38,21 +40,22 @@ char	*ft_max_itoabase(int base, intmax_t n, int isupper)
 	int		checkneg;
 	char	*tab;
 
-	size = ft_max_countdigit(n);
 	checkneg = 0;
+	size = ft_max_countdigit(n, base) - 1;
 	tab = base_table(base, isupper);
 	if (n < 0)
 	{
-		size++;
 		checkneg = 1;
 		n = -n;
+		size++;
 	}
 	str = ft_strnew(size);
 	if (str && checkneg)
 		str[0] = '-';
-	while (str && checkneg ? size > 1 : size >= 0)
+	while (str && n)
 	{
-		str[--size] = tab[n % base] + '0';
+		str[--size] = tab[n % base];
+		printf("%csize:%d\n", str[size], size);
 		n = n / base;
 	}
 	return (str);
@@ -60,6 +63,6 @@ char	*ft_max_itoabase(int base, intmax_t n, int isupper)
 
 int main(void)
 {
-	char *str = base_table(16, 0);
+	char *str = ft_max_itoabase(2, -25, 0);
 	printf("%s", str);
 }

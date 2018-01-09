@@ -6,20 +6,20 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:08:48 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 12:14:23 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 14:59:41 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-int	ft_max_countdigit(intmax_t n)
+int	ft_max_countdigit(intmax_t n, int base)
 {
 	int count;
 
 	count = 0;
-	while (n > 9 || n < -9)
+	while (n)
 	{
-		n = n / 10;
+		n = n / base;
 		count++;
 	}
 	return (count + 1);
