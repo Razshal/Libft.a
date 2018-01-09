@@ -6,11 +6,13 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/01/06 12:13:39 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/01/09 17:12:12 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
+PRINTFUNC = printf_functions/
+
 SRC = ft_atoi.c \
 	  ft_bzero.c \
 	  ft_countdigit.c \
@@ -78,14 +80,13 @@ SRC = ft_atoi.c \
 	  ft_tolower.c \
 	  ft_toupper.c \
 	  ft_printf.c \
-	  ft_is_printf_flag.c \
-	  ft_printf.c \
-	  ft_printflstadd.c \
-	  ft_is_printf_length.c \
-	  ft_printfaddstr.c \
-	  ft_printfparser.c \
-	  ft_is_printf_type.c \
-	  ft_printflistnew.c \
+	  $(PRINTFUNC)ft_is_printf_flag.c \
+	  $(PRINTFUNC)ft_printflstadd.c \
+	  $(PRINTFUNC)ft_is_printf_length.c \
+	  $(PRINTFUNC)ft_printfaddstr.c \
+	  $(PRINTFUNC)ft_printfparser.c \
+	  $(PRINTFUNC)ft_is_printf_type.c \
+	  $(PRINTFUNC)ft_printflistnew.c \
 	  ft_putwchar.c \
 	  ft_putwstr.c
 

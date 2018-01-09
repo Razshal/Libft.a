@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 15:26:34 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/08 15:18:57 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 17:25:33 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int		parse_flags(const char *format, int count, t_plist *list)
 	return (count);
 }
 
-static int		parse_one(t_plist **list, const char *format)
+static int		parse_one(t_plist **list, const char *format, va_list ap)
 {
 	int count;
 	t_plist *current;
@@ -80,13 +80,13 @@ static int		parse_one(t_plist **list, const char *format)
 	if (ft_is_printf_type(format[count]))
 	{
 		current->type = format[count++];
-		current->isrealarg = 1;
+		current->arg = va_arg(ap, void*);
 	}
 	ft_printflstadd(list, current);
 	return (count);
 }
 
-t_plist		*parse_input(const char *format)
+t_plist		*parse_input(const char *format, va_list ap)
 {
 	int		count;
 	int		cutcount;
@@ -107,7 +107,7 @@ t_plist		*parse_input(const char *format)
 						ft_printflststr(format, cutcount, count));
 			}
 			count++;
-			count = count + parse_one(&local, &format[count]);
+			count = count + parse_one(&local, &format[count], ap);
 			cutcount = count;
 		}
 	}

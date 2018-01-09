@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 15:18:02 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 17:21:21 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int				ft_strequ(char const *s1, char const *s2);
 int				ft_strnequ(char const *s1, char const *s2, size_t n);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_noleaks_strjoin(char *s1, char *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
 char			*ft_itoa(int n);
@@ -102,7 +103,6 @@ typedef struct	s_plist
 	int					precision;
 	char				*length;
 	char				type;
-	int					isrealarg;
 	struct s_plist	*next;
 }				t_plist;
 
@@ -112,7 +112,7 @@ int				ft_is_printf_length(char c);
 int				ft_is_printf_type(char c);
 void			ft_printflstadd(t_plist **alst, t_plist *new);
 t_plist			*ft_printflststr(const char *str, int start, int end);
-t_plist			*parse_input(const char *format);
+t_plist			*parse_input(const char *format, va_list ap);
 int				ft_putwchar(unsigned int c);
 void			ft_putwstr(unsigned char *s);
 char			*ft_max_itoabase(int base, intmax_t n, int isupper);

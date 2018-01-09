@@ -6,25 +6,12 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 16:27:08 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 17:21:06 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 #include <stdarg.h>
-
-static void	fillarglist(t_plist *list, va_list ap)
-{
-	t_plist *current;
-
-	current = list;
-	while (current)
-	{
-		if (current->isrealarg)
-			current->arg = va_arg(ap, void*);
-		current = current->next;
-	}
-}
 
 static int	chars_controller(t_plist *list)
 {
@@ -56,10 +43,11 @@ static int	chars_controller(t_plist *list)
 
 static int	number_controller(t_plist *list)
 {
-	int written;
-
-	written = 0;
-
+	char *basestr;
+	if ((list->type == 'i' && ! || list->type == 'd')
+		basestr = ft_max_itoabase(10, (int)(list->arg), 0);
+	if (list->type = 'D' || list
+	return (chars_controller(list));
 }
 
 static int	print_controller(t_plist *list)
@@ -72,7 +60,10 @@ static int	print_controller(t_plist *list)
 	while (list)
 	{
 		if (type == 'c' || type == 'C' || type == 's' || type == 'S')
+		{
+			prepare_print(list);
 			written += chars_controller(list);
+		}
 		else if (type == 'd' || type == 'D' || type == 'i' || type == 'o' ||
 			type == 'O' || type == 'u' || type == 'U' || type == 'x' ||
 			type == 'X')
@@ -90,9 +81,8 @@ int			ft_printf(const char *format, ...)
 	va_list ap;
 
 	written = 0;
-	instructions_list = parse_input(format);
 	va_start(ap, format);
-	fillarglist(instructions_list, ap);
+	instructions_list = parse_input(format, ap);
 	written = print_controller(instructions_list);
 	va_end(ap);
 	return (written);
