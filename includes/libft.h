@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 17:37:03 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:28 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <string.h>
 # include <stdlib.h>
+# include <stdarg.h>
 #include <stdio.h>
 
 void			*ft_memset(void *b, int c, size_t len);
@@ -111,13 +112,16 @@ int				ft_is_printf_flag(char c);
 int				ft_is_printf_length(char c);
 int				ft_is_printf_type(char c);
 int				ft_check_lconv (t_plist *list);
-
 void			ft_printflstadd(t_plist **alst, t_plist *new);
 t_plist			*ft_printflststr(const char *str, int start, int end);
 t_plist			*parse_input(const char *format, va_list ap);
 int				ft_putwchar(unsigned int c);
 void			ft_putwstr(unsigned char *s);
 char			*ft_max_itoabase(int base, intmax_t n, int isupper);
-
-
+char			*ft_umax_itoabase(int base, uintmax_t n, int isupper);
+int				ft_check_hconv(t_plist *list);
+int				ft_check_lconv(t_plist *list);
+char			*ft_printf_type_d(t_plist *list);
+char			*ft_printf_type_D(t_plist *list);
+char			*base_table(int base, int isupper);
 #endif

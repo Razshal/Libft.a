@@ -6,34 +6,26 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 17:48:31 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:37:58 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
-#include <stdarg.h>
+#include <unistd.h>
 
 static int	chars_controller(t_plist *list)
 {
-	if (list->type == 'c' && (!(list->length[0] == 'l') || (list->length[1])))
-	{
-		ft_putchar((char)(list->arg));
-		return (1);
-	}
-	else if ((list->type == 'C') || (list->type == 'c'
-			&& list->length[0] == 'l' && !(list->length[1])))
-	{
-		ft_putwchar((unsigned char)(list->arg));
-		return (1);
-	}
-	else if (list->type == 's'
-			&& (!(list->length[0] == 'l') || (list->length[1])))
+	if (list->type == 'c' && !ft_check_lconv(list))
+		return (write(1, &(list->arg), 1));
+	else if ((list->type == 'C') || (list->type == 'c' && ft_check_lconv(list)))
+		return (ft_putwchar((unsigned char)(list->arg)));
+	else if (list->type == 's' && !ft_check_lconv(list))
 	{
 		ft_putstr((char*)(list->arg));
 		return (ft_strlen(list->arg));
 	}
-	else if ((list->type == 'S') || (list->type == 's'
-			&& list->length[0] == 'l' && !(list->length[1])))
+	else if ((list->type == 'S') ||
+			(list->type == 's' && ft_check_lconv(list)))
 	{
 		ft_putwstr((unsigned char*)(list->arg));
 		return (ft_strlen(list->arg));
@@ -44,10 +36,12 @@ static int	chars_controller(t_plist *list)
 static int	number_controller(t_plist *list)
 {
 	char *basestr;
-	if ((list->type == 'i' || list->type == 'd')  && !ft_check_lconv(list))
-		basestr = ft_max_itoabase(10, (int)(list->arg), 0);
-	if (list->type == 'D' ||
-			((list->type == 'd' || list->type == 'i') && ft_check_lconv(list)))
+	if ((list->type == 'i' || list->type == 'd'))
+		basestr = ft_printf_type_d(list);
+	if (list->type == 'D')
+		basestr = ft_printf_type_D(list);
+
+
 	return (chars_controller(list));
 }
 

@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 17:36:04 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 17:40:57 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:21:48 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ int	ft_is_printf_type(char c)
 int ft_check_lconv (t_plist *list)
 {
 	if ((list->length[0] == 'l') && !(list->length[1]))
+		return (1);
+	return (0);
+}
+
+int ft_check_hconv (t_plist *list)
+{
+	if ((list->length[0] == 'h') && !(list->length[1]))
 		return (1);
 	return (0);
 }

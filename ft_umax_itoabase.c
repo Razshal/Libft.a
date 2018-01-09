@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_umax_itoabase.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 19:15:23 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 18:10:02 by mfonteni         ###   ########.fr       */
+/*   Created: 2018/01/09 18:52:42 by mfonteni          #+#    #+#             */
+/*   Updated: 2018/01/09 18:58:31 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "includes/libft.h"
 
-void	ft_putchar(char c)
+char	*ft_umax_itoabase(int base, uintmax_t n, int isupper)
 {
-	write(1, &c, 1);
+	char	*str;
+	int		size;
+	int		checkneg;
+	char	*tab;
+
+	checkneg = 0;
+	size = ft_max_countdigit_base(n, base) - 1;
+	tab = base_table(base, isupper);
+	str = ft_strnew(size);
+	while (str && n)
+	{
+		str[--size] = tab[n % base];
+		n = n / base;
+	}
+	return (str);
 }
