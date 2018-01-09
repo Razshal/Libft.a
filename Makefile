@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/01/09 19:43:30 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/01/09 20:06:11 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ SRC = ft_atoi.c \
 	  $(PRINTFUNC)ft_printflistnew.c \
 	  ft_putwchar.c \
 	  ft_putwstr.c
+
 
 OBJ = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror
