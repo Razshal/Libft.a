@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/01/09 17:48:29 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/01/09 19:43:30 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC = ft_atoi.c \
 	  ft_isascii.c \
 	  ft_isdigit.c \
 	  ft_ispace.c \
+	  ft_isupper.c \
 	  ft_isprint.c \
 	  ft_itoa.c \
 	  ft_lstadd.c \

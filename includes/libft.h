@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:28 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 19:45:52 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
+int				ft_isupper(char c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 void			*ft_memalloc(size_t size);
@@ -122,6 +123,6 @@ char			*ft_umax_itoabase(int base, uintmax_t n, int isupper);
 int				ft_check_hconv(t_plist *list);
 int				ft_check_lconv(t_plist *list);
 char			*ft_printf_type_d(t_plist *list);
-char			*ft_printf_type_D(t_plist *list);
+char			*ft_printf_type_unsigned(t_plist *list);
 char			*base_table(int base, int isupper);
 #endif
