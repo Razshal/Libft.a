@@ -6,13 +6,14 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/08 18:27:32 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 13:04:45 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include <stdlib.h>
 #include <stdio.h>
 
 void			*ft_memset(void *b, int c, size_t len);
@@ -85,6 +86,7 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void			ft_print_split(char **tab);
 int				ft_ispace(char c);
 int				ft_countdigit(int n);
+int				ft_max_countdigit(intmax_t n);
 char			*ft_strrev(char *str);
 char			*ft_strlowcase(char *str);
 char			*ft_strupcase(char *str);
@@ -113,5 +115,6 @@ t_plist			*ft_printflststr(const char *str, int start, int end);
 t_plist			*parse_input(const char *format);
 int				ft_putwchar(unsigned int c);
 void			ft_putwstr(unsigned char *s);
+char			*ft_max_itoabase(int base, intmax_t n, int isupper);
 
 #endif

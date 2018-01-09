@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/08 17:38:13 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 10:43:19 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ static void	chars_controller(t_plist *list)
 	if ((list->type == 'S') || (list->type == 's'
 				&& list->length[0] == 'l' && !(list->length[1])))
 		ft_putwstr((unsigned char*)(list->arg));
-
-
-
 }
 
 static void	print_controller(t_plist *list)
@@ -52,6 +49,7 @@ static void	print_controller(t_plist *list)
 	{
 		if (type == 'c' || type == 'C' || type == 's' || type == 'S')
 			chars_controller(list);
+	
 	}
 }
 

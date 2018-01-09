@@ -6,13 +6,13 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:08:48 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 12:11:31 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/09 12:14:23 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-int	ft_countdigit(int n)
+int	ft_max_countdigit(intmax_t n)
 {
 	int count;
 
@@ -24,4 +24,3 @@ int	ft_countdigit(int n)
 	}
 	return (count + 1);
 }
-
