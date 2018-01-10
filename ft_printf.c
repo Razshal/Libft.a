@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/10 12:31:23 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/10 16:00:00 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ static t_plist	*number_controller(t_plist *list)
 	return (list);
 }
 
-static int	flags_precision(t_plist *list)
+static int	applyflags_and_print(t_plist *list)
 {
 	int leftalign;
 
 	leftalign = (ft_strchr(list->flag, '-') ? 1 : 0);
+	
 
 	return (chars_printer(list));
 }
@@ -72,11 +73,10 @@ static int	print_controller(t_plist *list)
 				 type == 'X' || type == 'p')
 			number_controller(list);
 
-		written += flags_precision(list);
+		written += applyflags_and_print(list);
 		list = list->next;
 	}
 	return (written);
-
 }
 
 int			ft_printf(const char *format, ...)
