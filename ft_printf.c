@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/10 16:00:00 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/10 17:16:13 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ static t_plist	*number_controller(t_plist *list)
 static int	applyflags_and_print(t_plist *list)
 {
 	int leftalign;
+	char *temp;
 
 	leftalign = (ft_strchr(list->flag, '-') ? 1 : 0);
+	printf_hash_flag(list);
 	
-
-	return (chars_printer(list));
 }
 
 static int	print_controller(t_plist *list)
