@@ -6,13 +6,13 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 18:26:42 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 19:44:18 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/10 12:22:38 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-//TODO : ask about the D conversion done in number controller
+//TODO : do the %p
 
 char *ft_printf_type_d(t_plist *list)
 {

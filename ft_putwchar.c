@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/05 12:46:04 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/08 17:35:07 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/10 12:12:48 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	ft_putwchar(unsigned int c)
 	int bytesleft;
 	int modifier;
 	int length;
+	int written;
 
 	bytes = ft_strnew(6);
 	bytesleft = ft_getbyteslength(c);
@@ -50,5 +51,7 @@ int	ft_putwchar(unsigned int c)
 		modifier = modifier >> 1;
 	}
 	bytes[0] = (192 + (16 * (length == 2 ? 0 : length - 1)) | (c & modifier));
-	return (write(1, bytes, length));
+	written = write(1, bytes, length);
+	ft_memdel((void*)&bytes);
+	return (written);
 }

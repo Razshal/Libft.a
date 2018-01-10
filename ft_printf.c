@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 20:03:08 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/10 12:31:23 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	chars_printer(t_plist *list)
 	if (list->type == 'c' && !ft_check_lconv(list))
 		return (write(1, &(list->arg), 1));
 	else if ((list->type == 'C') || (list->type == 'c' && ft_check_lconv(list)))
-		return (ft_putwchar((unsigned char)(list->arg)));
+		return (ft_putwchar((wchar_t)(list->arg)));
 	else if (list->type == 's' && !ft_check_lconv(list))
 	{
 		ft_putstr((char*)(list->arg));
@@ -27,7 +27,7 @@ static int	chars_printer(t_plist *list)
 	else if ((list->type == 'S') ||
 			(list->type == 's' && ft_check_lconv(list)))
 	{
-		ft_putwstr((unsigned char*)(list->arg));
+		ft_putwstr((wchar_t*)(list->arg));
 		return (ft_strlen(list->arg));
 	}
 	return (-1);
@@ -35,7 +35,7 @@ static int	chars_printer(t_plist *list)
 
 static t_plist	*number_controller(t_plist *list)
 {
-	if (ft_isupper(list->type))
+	if (ft_isupper(list->type) && list->type != 'X')
 	{
 		list->type = ft_tolower(list->type);
 		list->length[0] = 'l';
@@ -49,11 +49,13 @@ static t_plist	*number_controller(t_plist *list)
 	return (list);
 }
 
-static int flags_precision(t_plist *list)
+static int	flags_precision(t_plist *list)
 {
 	int leftalign;
 
 	leftalign = (ft_strchr(list->flag, '-') ? 1 : 0);
+
+	return (chars_printer(list));
 }
 
 static int	print_controller(t_plist *list)
@@ -65,14 +67,13 @@ static int	print_controller(t_plist *list)
 	written = 0;
 	while (list)
 	{
-		if (type == 'c' || type == 'C' || type == 's' || type == 'S')
-			written += flags_precision(list);
-		else if (type == 'd' || type == 'D' || type == 'i' || type == 'o' ||
+		if (type == 'd' || type == 'D' || type == 'i' || type == 'o' ||
 				 type == 'O' || type == 'u' || type == 'U' || type == 'x' ||
-				 type == 'X')
+				 type == 'X' || type == 'p')
 			number_controller(list);
-			written += flags_precision(list);
-			list = list->next;
+
+		written += flags_precision(list);
+		list = list->next;
 	}
 	return (written);
 

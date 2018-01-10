@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 19:45:52 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/10 12:26:29 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct	s_plist
 	int					precision;
 	char				*length;
 	char				type;
+	char				oldertype;
 	struct s_plist	*next;
 }				t_plist;
 
@@ -117,7 +118,7 @@ void			ft_printflstadd(t_plist **alst, t_plist *new);
 t_plist			*ft_printflststr(const char *str, int start, int end);
 t_plist			*parse_input(const char *format, va_list ap);
 int				ft_putwchar(unsigned int c);
-void			ft_putwstr(unsigned char *s);
+void			ft_putwstr(wchar_t *s);
 char			*ft_max_itoabase(int base, intmax_t n, int isupper);
 char			*ft_umax_itoabase(int base, uintmax_t n, int isupper);
 int				ft_check_hconv(t_plist *list);
