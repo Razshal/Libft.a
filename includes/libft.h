@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 17:47:44 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 19:53:04 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ typedef struct	s_plist
 	int					precision;
 	char				*length;
 	char				type;
-	char				oldertype;
+	int					isrealarg;
 	struct s_plist	*next;
 }				t_plist;
 

@@ -6,13 +6,13 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 17:36:04 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 19:51:37 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_straddspace(char *s1, int totheright)
+static char	*ft_straddspace(char *s1, int totheright)
 {
 	char	*newstr;
 
@@ -43,6 +43,7 @@ char	*printf_flags_chars(t_plist *list)
 	int spaces;
 	char *str;
 	char temp;
+
 
 	if (list->type == 'C' || list->type == 'c')
 	{

@@ -6,14 +6,28 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 17:31:29 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 20:01:27 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 #include <unistd.h>
 
-static int	chars_printer(t_plist *list)
+static void		printf_debug_printlist(t_plist *list)
+{
+	printf("Arg:%s\n", (char*)list->arg);
+	printf("flags:%s\n", list->flag);
+	printf("width:%d\n", list->width);
+	printf("precision:%d\n", list->precision);
+	printf("length:%s\n", list->length);
+	printf("type:%c\n\n", list->type);
+	if (list->next)
+	{
+		list = list->next;
+		printf_debug_printlist(list);
+	}
+}
+static int		chars_printer(t_plist *list)
 {
 	if (list->type == 'c' && !check_lconv(list))
 		return (write(1, &(list->arg), 1));
@@ -49,7 +63,7 @@ static t_plist	*number_controller(t_plist *list)
 	return (list);
 }
 
-static int	flags_precision(t_plist *list)
+static int		flags_precision(t_plist *list)
 {
 	if (!ischartype(list->type))
 	{
@@ -61,26 +75,25 @@ static int	flags_precision(t_plist *list)
 	return (chars_printer(list));
 }
 
-static int	print_controller(t_plist *list)
+static int		print_controller(t_plist *list)
 {
-	char type;
 	int written;
 
-	type = list->type;
 	written = 0;
 	while (list)
 	{
-		if (type == 'd' || type == 'D' || type == 'i' || type == 'o' ||
-				 type == 'O' || type == 'u' || type == 'U' || type == 'x' ||
-				 type == 'X' || type == 'p')
+		if (!ischartype(list->type))
 			number_controller(list);
-		written += flags_precision(list);
+		if (list->isrealarg)
+			written += flags_precision(list);
+		else
+			written += chars_printer(list);
 		list = list->next;
 	}
 	return (written);
 }
 
-int			ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	int written;
 	t_plist *instructions_list;
@@ -89,6 +102,9 @@ int			ft_printf(const char *format, ...)
 	written = 0;
 	va_start(ap, format);
 	instructions_list = parse_input(format, ap);
+
+	printf_debug_printlist(instructions_list);
+
 	written = print_controller(instructions_list);
 	va_end(ap);
 	return (written);
