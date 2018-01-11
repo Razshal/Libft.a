@@ -15,17 +15,17 @@
 
 static int	chars_printer(t_plist *list)
 {
-	if (list->type == 'c' && !ft_check_lconv(list))
+	if (list->type == 'c' && !check_lconv(list))
 		return (write(1, &(list->arg), 1));
-	else if ((list->type == 'C') || (list->type == 'c' && ft_check_lconv(list)))
+	else if ((list->type == 'C') || (list->type == 'c' && check_lconv(list)))
 		return (ft_putwchar((wchar_t)(list->arg)));
-	else if (list->type == 's' && !ft_check_lconv(list))
+	else if (list->type == 's' && !check_lconv(list))
 	{
 		ft_putstr((char*)(list->arg));
 		return (ft_strlen(list->arg));
 	}
 	else if ((list->type == 'S') ||
-			(list->type == 's' && ft_check_lconv(list)))
+			(list->type == 's' && check_lconv(list)))
 	{
 		ft_putwstr((wchar_t*)(list->arg));
 		return (ft_strlen(list->arg));
@@ -42,18 +42,18 @@ static t_plist	*number_controller(t_plist *list)
 		list->length[1] = '\0';
 	}
 	if (list->type == 'i' || list->type == 'd' || list->type == 'D')
-		list->arg = (void*)ft_printf_type_d(list);
+		list->arg = (void*)printf_type_d(list);
 	if (list->type == 'o' || list->type == 'u' || list->type == 'x')
-		list->arg = (void*)ft_printf_type_unsigned(list);
+		list->arg = (void*)printf_type_unsigned(list);
 	list->type = 's';
 	return (list);
 }
 
 static int	flags_precision(t_plist *list)
 {
-	if (!ft_printf_ischartype(list->type))
+	if (!ischartype(list->type))
 	{
-		ft_printf_flags_num(list);
+		printf_flags_num(list);
 		list->type = 's';
 	}
 	else

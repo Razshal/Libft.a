@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/01/11 17:39:38 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/01/11 18:16:06 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,14 +81,13 @@ SRC = ft_atoi.c \
 	  ft_tolower.c \
 	  ft_toupper.c \
 	  ft_printf.c \
-	  ft_max_itoabase.c \
-	  ft_umax_itoabase.c \
+	  ft_max_countdigit.c \
 	  $(PRINTFUNC)printflstadd.c \
 	  $(PRINTFUNC)printfaddstr.c \
 	  $(PRINTFUNC)printfparser.c \
 	  $(PRINTFUNC)printf_checks.c \
-	  $(PRINTFUNC)printflistnew.c \
-	  $(PRINTFUNC)printf_ischartype.c \
+	  $(PRINTFUNC)printflstnew.c \
+	  $(PRINTFUNC)ischartype.c \
 	  $(PRINTFUNC)printf_types.c \
 	  $(PRINTFUNC)printf_flag_hash.c \
 	  $(PRINTFUNC)printf_flags_chars.c \

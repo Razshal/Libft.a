@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 17:38:43 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:47:44 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,9 @@ int				is_printf_flag(char c);
 int				is_printf_length(char c);
 int				is_printf_type(char c);
 int				check_lconv (t_plist *list);
+int				check_hconv (t_plist *list);
 void			printflstadd(t_plist **alst, t_plist *new);
-t_plist			*printflststr(const char *str, int start, int end);
+t_plist			*printfaddstr(const char *str, int start, int end);
 t_plist			*parse_input(const char *format, va_list ap);
 int				ft_putwchar(unsigned int c);
 void			ft_putwstr(wchar_t *s);
@@ -128,7 +129,7 @@ int				check_lconv(t_plist *list);
 char			*printf_type_d(t_plist *list);
 char			*printf_type_unsigned(t_plist *list);
 char			*base_table(int base, int isupper);
-int				printf_ischartype(char c);
+int				ischartype(char c);
 void			printf_flag_hash(t_plist *list);
 void			printf_flags_num(t_plist *list);
 char			*printf_flags_chars(t_plist *list);

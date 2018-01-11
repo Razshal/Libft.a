@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printflstadd.c                                  :+:      :+:    :+:   */
+/*   printflstnew.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/02 15:13:53 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 17:20:20 by mfonteni         ###   ########.fr       */
+/*   Created: 2018/01/02 14:12:13 by mfonteni          #+#    #+#             */
+/*   Updated: 2018/01/11 17:20:55 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "../includes/libft.h"
 
-void	ft_printflstadd(t_plist **alst, t_plist *new)
+t_plist	*printflstnew(void	*arg)
 {
-	t_plist *current;
+	t_plist	*newlist;
 
-	current = *alst;
-	if (!new)
-		return;
-	if (!*alst)
-		*alst = new;
+	newlist = NULL;
+	if (!(newlist = (t_plist*)malloc(sizeof(t_plist))))
+		return (NULL);
+	if (arg)
+		newlist->arg = arg;
 	else
-	{
-		while (current->next)
-			current = current->next;
-		current->next = new;
-	}
+		newlist->arg = NULL;
+	newlist->flag = ft_strnew(4);
+	newlist->width = 0;
+	newlist->precision = -1;
+	newlist->length = ft_strnew(2);
+	newlist->type = -1;
+	newlist->oldertype = -1;
+	newlist->next = NULL;
+	return (newlist);
 }

@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 17:38:55 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 18:14:52 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,14 @@ static void replace_space_by_zeroes(char *str)
 
 void		printf_flags_num(t_plist *list)
 {
-	int spaces;
-	int zeroes;
 	int rightalign;
 	char *str;
 
 	str = list->arg;
 	rightalign = (ft_strchr(list->flag, '-') ? 1 : 0);
-	while (list->precision != -1 && ft_strlen(str) < list->precision)
+	while (list->precision != -1 && ft_strlen(str) < (size_t)list->precision)
 		str = ft_straddchar(str, rightalign, '0');
-	while (list->width != 0 && list->width > ft_strlen(str))
+	while (list->width != 0 && (size_t)list->width > ft_strlen(str))
 		str = ft_straddchar(str, rightalign, ' ');
 	if (list->precision == -1 && list->width)
 		replace_space_by_zeroes(str);
