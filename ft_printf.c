@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/10 17:16:13 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 12:56:28 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static int	applyflags_and_print(t_plist *list)
 	int leftalign;
 	char *temp;
 
+	if (list->arg == NULL)
+		return (0);
 	leftalign = (ft_strchr(list->flag, '-') ? 1 : 0);
 	printf_hash_flag(list);
 	
@@ -68,11 +70,8 @@ static int	print_controller(t_plist *list)
 	written = 0;
 	while (list)
 	{
-		if (type == 'd' || type == 'D' || type == 'i' || type == 'o' ||
-				 type == 'O' || type == 'u' || type == 'U' || type == 'x' ||
-				 type == 'X' || type == 'p')
+		if (!ft_printf_ischartype(list->type))
 			number_controller(list);
-
 		written += applyflags_and_print(list);
 		list = list->next;
 	}

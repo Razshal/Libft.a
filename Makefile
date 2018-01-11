@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/01/09 20:06:11 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/01/11 12:02:39 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ SRC = ft_atoi.c \
 	  $(PRINTFUNC)ft_printfparser.c \
 	  $(PRINTFUNC)ft_printf_checks.c \
 	  $(PRINTFUNC)ft_printflistnew.c \
+	  $(PRINTFUNC)ft_printf_ischartype.c \
 	  ft_putwchar.c \
 	  ft_putwstr.c
 
