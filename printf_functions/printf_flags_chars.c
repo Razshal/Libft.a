@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 13:18:49 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 16:02:40 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ char	*printf_flags_chars(t_plist *list)
 	int spaces;
 	char *str;
 
-	precision = (list->precision != 1 && list->type != 'c'
+	precision = (list->precision != -1 && list->type != 'c'
 			&& list->type != 'C' ? list->precision : -1);
 	spaces = (precision > -1 ? list->width - precision : list->width);
 	str = list->arg;
 	if (precision > -1 && precision < ft_strlen(str))
 		str[precision] = '\0';
-	while (ft_strlen(str) < list->width)
+	while (ft_strlen(str) < spaces)
 		str = ft_straddspace(str, (ft_strchr(list->flag, '-') ? 1 : 0));
 	return (str);
 }
