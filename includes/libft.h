@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 12:56:34 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 16:39:54 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,4 +129,5 @@ char			*ft_printf_type_d(t_plist *list);
 char			*ft_printf_type_unsigned(t_plist *list);
 char			*base_table(int base, int isupper);
 int				ft_printf_ischartype(char c);
+void			ft_printf_hash_flag(t_plist *list);
 #endif
