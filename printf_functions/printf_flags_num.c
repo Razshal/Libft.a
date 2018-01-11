@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 16:59:42 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:38:55 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	is_signed(char c)
 static char	*ft_straddchar(char *s1, int totheright, char c)
 {
 	char	*newstr;
-	size_t	alloc_length;
 	char	filler[2];
 
 	newstr = NULL;
@@ -78,8 +77,5 @@ void		printf_flags_num(t_plist *list)
 	if ((ft_strchr(list->flag, ' ') || ft_strchr(list->flag, '+')) &&
 			is_signed(list->type))
 		str = ft_straddchar(str, 1, (ft_strchr(list->flag, '+') ? '+' : ' '));
-	ft_printf_hash_flag(list);
-	if (str[ft_strlen(str) - 1] == '0')
-		return;
-
+	printf_flag_hash(list);
 }

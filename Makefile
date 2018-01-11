@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/01/11 12:02:39 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/01/11 17:39:38 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,12 +81,18 @@ SRC = ft_atoi.c \
 	  ft_tolower.c \
 	  ft_toupper.c \
 	  ft_printf.c \
-	  $(PRINTFUNC)ft_printflstadd.c \
-	  $(PRINTFUNC)ft_printfaddstr.c \
-	  $(PRINTFUNC)ft_printfparser.c \
-	  $(PRINTFUNC)ft_printf_checks.c \
-	  $(PRINTFUNC)ft_printflistnew.c \
-	  $(PRINTFUNC)ft_printf_ischartype.c \
+	  ft_max_itoabase.c \
+	  ft_umax_itoabase.c \
+	  $(PRINTFUNC)printflstadd.c \
+	  $(PRINTFUNC)printfaddstr.c \
+	  $(PRINTFUNC)printfparser.c \
+	  $(PRINTFUNC)printf_checks.c \
+	  $(PRINTFUNC)printflistnew.c \
+	  $(PRINTFUNC)printf_ischartype.c \
+	  $(PRINTFUNC)printf_types.c \
+	  $(PRINTFUNC)printf_flag_hash.c \
+	  $(PRINTFUNC)printf_flags_chars.c \
+	  $(PRINTFUNC)printf_flags_num.c \
 	  ft_putwchar.c \
 	  ft_putwstr.c
 

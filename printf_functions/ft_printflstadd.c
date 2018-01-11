@@ -6,11 +6,11 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:13:53 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/04 17:59:25 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:20:20 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/libft.h"
 
 void	ft_printflstadd(t_plist **alst, t_plist *new)
 {

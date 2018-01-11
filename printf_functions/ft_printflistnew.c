@@ -6,12 +6,12 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 14:12:13 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 15:44:54 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:20:55 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "includes/libft.h"
+#include "../includes/libft.h"
 
 t_plist	*ft_printflistnew(void	*arg)
 {

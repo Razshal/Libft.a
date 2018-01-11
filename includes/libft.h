@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 16:39:54 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:38:43 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,23 +111,26 @@ typedef struct	s_plist
 	struct s_plist	*next;
 }				t_plist;
 
-t_plist			*ft_printflistnew(void *arg);
-int				ft_is_printf_flag(char c);
-int				ft_is_printf_length(char c);
-int				ft_is_printf_type(char c);
-int				ft_check_lconv (t_plist *list);
-void			ft_printflstadd(t_plist **alst, t_plist *new);
-t_plist			*ft_printflststr(const char *str, int start, int end);
+t_plist			*printflstnew(void *arg);
+int				is_printf_flag(char c);
+int				is_printf_length(char c);
+int				is_printf_type(char c);
+int				check_lconv (t_plist *list);
+void			printflstadd(t_plist **alst, t_plist *new);
+t_plist			*printflststr(const char *str, int start, int end);
 t_plist			*parse_input(const char *format, va_list ap);
 int				ft_putwchar(unsigned int c);
 void			ft_putwstr(wchar_t *s);
 char			*ft_max_itoabase(int base, intmax_t n, int isupper);
 char			*ft_umax_itoabase(int base, uintmax_t n, int isupper);
-int				ft_check_hconv(t_plist *list);
-int				ft_check_lconv(t_plist *list);
-char			*ft_printf_type_d(t_plist *list);
-char			*ft_printf_type_unsigned(t_plist *list);
+int				check_hconv(t_plist *list);
+int				check_lconv(t_plist *list);
+char			*printf_type_d(t_plist *list);
+char			*printf_type_unsigned(t_plist *list);
 char			*base_table(int base, int isupper);
-int				ft_printf_ischartype(char c);
-void			ft_printf_hash_flag(t_plist *list);
+int				printf_ischartype(char c);
+void			printf_flag_hash(t_plist *list);
+void			printf_flags_num(t_plist *list);
+char			*printf_flags_chars(t_plist *list);
+
 #endif

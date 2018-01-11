@@ -6,11 +6,11 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 15:26:34 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/09 17:25:33 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:20:44 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "../includes/libft.h"
 #include <stdarg.h>
 
 static int		assign_digit(const char *format, int count, t_plist *list)

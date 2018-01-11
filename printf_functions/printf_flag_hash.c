@@ -6,13 +6,13 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:29:49 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/10 16:29:53 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:32:59 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	printf_hash_flag(t_plist *list)
+void	printf_flag_hash(t_plist *list)
 {
 	int leftalign;
 	char *temp;
