@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:29:49 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/12 13:58:47 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/12 16:54:57 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	printf_flag_hash(t_plist *list)
 	if (ft_strchr(list->flag, '#') && list->type == 'o')
 	{
 		temp = ft_strjoin("0", list->arg);
-		ft_memdel(list->arg);
+		free(list->arg);
 		list->arg = temp;
 	}
 	else if (ft_strchr(list->flag, '#') && list->type == 'x')
 	{
 		temp = ft_strjoin("0x", list->arg);
-		ft_memdel(list->arg);
+		free(list->arg);
 		list->arg = temp;
 	}
 	else if (ft_strchr(list->flag, '#') && list->type == 'X')

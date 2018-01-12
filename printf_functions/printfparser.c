@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 18:00:08 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 19:57:10 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/12 16:12:48 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int		assign_digit(const char *format, int count, t_plist *list)
 	if (format[count - 1] == '.')
 	{
 		if (!ft_isdigit(format[count]))
-			list->precision = 1;
+			list->precision = 0;
 		else
 			list->precision = ft_atoi(&format[count]);
 	}
