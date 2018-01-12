@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/12 18:24:13 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/12 19:20:08 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,34 @@ static int	is_signed(char c)
 	return (0);
 }
 
-static char	*ft_straddchar(char *s1, int totheright, char c, size_t toadd)
+static int	is_octal_or_hex(char c)
+{
+	if (c == 'x' || c == 'X' || c == 'o')
+		return (1);
+	return (0);
+}
+
+static void	ft_straddchar(t_plist *list, int totheright, char c, size_t toadd)
 {
 	char	*newstr;
 	size_t	count;
 
 	newstr = NULL;
 	count = 0;
-	if (s1)
+	if (list->arg)
 	{
-		if (!(newstr = (ft_strnew(ft_strlen(s1) + toadd))))
-			return (NULL);
+		if (!(newstr = (ft_strnew(ft_strlen(list->arg) + toadd + 1))))
+			return;
 		if (!totheright)
-			ft_strcat(newstr, s1);
+			ft_strcat(newstr, list->arg);
 		count = ft_strlen(newstr);
-		while (toadd > (count + ft_strlen(s1)))
+		while (toadd > (count + ft_strlen(list->arg)))
 			newstr[count++] = c;
 		if (totheright)
-			ft_strcat(newstr, s1);
-		ft_memdel((void*)&s1);
+			ft_strcat(newstr, list->arg);
+		ft_memdel((void*)&list->arg);
+		list->arg = newstr;
 	}
-	return (newstr);
 }
 
 void		printf_flags_num(t_plist *list)
@@ -51,16 +58,16 @@ void		printf_flags_num(t_plist *list)
 	zeroorspace = list->precision == -1 && list->width ? '0' : ' ';
 	if (list->precision > -1 &&
 			(ft_strlen(list->arg) < (size_t)list->precision))
-		list->arg = ft_straddchar(list->arg, 1, '0', (size_t)list->precision);
-	if (zeroorspace == ' ')
+		ft_straddchar(list, 1, '0', (size_t)list->precision);
+	if (is_octal_or_hex(list->type) && zeroorspace == ' ')
 		printf_flag_hash(list);
 	if (list->width != 0 && (size_t)list->width > ft_strlen(list->arg))
-		list->arg = ft_straddchar(list->arg, rightalign, zeroorspace, 
+		ft_straddchar(list, rightalign, zeroorspace, 
 				(size_t)list->width);
-	if (zeroorspace == '0')
+	if (is_octal_or_hex(list->type) && zeroorspace == '0')
 		printf_flag_hash(list);
 	if ((ft_strchr(list->flag, ' ') || ft_strchr(list->flag, '+'))
-				&& is_signed(list->type))
-		list->arg = ft_straddchar(list->arg, 1,
+			&& is_signed(list->type))
+		ft_straddchar(list, 1,
 				(ft_strchr(list->flag, '+') ? '+' : ' '), 1);
 }

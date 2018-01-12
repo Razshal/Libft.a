@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:29:49 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/12 18:04:27 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/12 19:20:53 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ void	printf_flag_hash(t_plist *list)
 
 	temp = NULL;
 	leftalign = (ft_strchr(list->flag, '-') ? 1 : 0);
-	if (ft_strchr(list->flag, '#') && list->type == 'o')
-		temp = ft_strjoin("0", list->arg);
-	else if (ft_strchr(list->flag, '#') && list->type == 'x')
-		temp = ft_strjoin("0x", list->arg);
-	else if (ft_strchr(list->flag, '#') && list->type == 'X')
-		temp = ft_strjoin("0X", list->arg);
-	ft_memdel(&list->arg);
-	list->arg = temp;
+	if (ft_strchr(list->flag, '#'))
+	{
+		if (ft_strchr(list->flag, '#') && list->type == 'o')
+			temp = ft_strjoin("0", list->arg);
+		else if (ft_strchr(list->flag, '#') && list->type == 'x')
+			temp = ft_strjoin("0x", list->arg);
+		else if (ft_strchr(list->flag, '#') && list->type == 'X')
+			temp = ft_strjoin("0X", list->arg);
+		free(list->arg);
+		list->arg = temp;
+	}
 }
