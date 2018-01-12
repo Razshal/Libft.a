@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/12 18:09:32 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/12 19:43:49 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,6 @@ int				ischartype(char c);
 void			printf_flag_hash(t_plist *list);
 void			printf_flags_num(t_plist *list);
 char			*printf_flags_chars(t_plist *list);
-
+void			ft_straddchar(t_plist *list,
+					int totheright, char c, size_t toadd);
 #endif

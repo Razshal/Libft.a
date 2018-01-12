@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 18:26:42 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 12:32:20 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/12 19:37:46 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ char *printf_type_unsigned(t_plist *list)
 	int uppercase;
 	
 	uppercase = (list->type == 'X' ? 1 : 0);
-	base = (list->type == 'o' ? 8 : 10);
-	base = (list->type == 'x' || list->type == 'X' ? 16 : 10);
+	base = (list->type == 'x' || list->type == 'X' ? 16 :
+			(list->type == 'o' ? 8 : 10));
 	if ((intmax_t)list->arg == 0 && list->precision == 0)
 		return (NULL);
 	if (!(list->length[0]))
