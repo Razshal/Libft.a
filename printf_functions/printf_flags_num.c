@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 18:14:52 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/12 12:38:38 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void		printf_flags_num(t_plist *list)
 	str = list->arg;
 	rightalign = (ft_strchr(list->flag, '-') ? 1 : 0);
 	while (list->precision != -1 && ft_strlen(str) < (size_t)list->precision)
-		str = ft_straddchar(str, rightalign, '0');
+		str = ft_straddchar(str, 1, '0');
 	while (list->width != 0 && (size_t)list->width > ft_strlen(str))
 		str = ft_straddchar(str, rightalign, ' ');
 	if (list->precision == -1 && list->width)

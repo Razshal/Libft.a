@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 19:51:37 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/12 11:32:14 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ char	*printf_flags_chars(t_plist *list)
 	char *str;
 	char temp;
 
-
 	if (list->type == 'C' || list->type == 'c')
 	{
 		temp = (char)list->arg;
@@ -56,7 +55,7 @@ char	*printf_flags_chars(t_plist *list)
 	precision = (list->precision != -1 && list->type != 'c'
 			&& list->type != 'C' ? list->precision : -1);
 	spaces = (precision > -1 ? list->width - precision : list->width);
-	if (precision > -1 && precision < (int)ft_strlen(str))
+	if (precision > -1 && (size_t)precision < ft_strlen(str))
 		str[precision] = '\0';
 	while ((int)ft_strlen(str) < spaces)
 		str = ft_straddspace(str, (ft_strchr(list->flag, '-') ? 1 : 0));
