@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 15:20:42 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 17:51:09 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,12 @@ static void		printf_debug_printlist(t_plist *list)
 */
 static int		chars_printer(t_plist *list)
 {
-	if (list->type == 's' && !check_lconv(list))
+	char percent;
+
+	percent = '%';
+	if (list->type == '%')
+		return (write(1, &percent, 1));
+	else if (list->type == 's' && !check_lconv(list))
 	{
 		ft_putstr((char*)(list->arg));
 		return (ft_strlen(list->arg));
@@ -82,15 +87,14 @@ static int		print_controller(t_plist *list)
 					list->arg = ft_strdup(list->arg);
 				printf_flags_chars(list);
 			}
-			written += chars_printer(list);
 		}
-		else
+		else if (!(list->type == '%'))
 		{
 			number_controller(list);
 			printf_flags_num(list);
 			list->type = 's';
-			written += chars_printer(list);
 		}
+		written += chars_printer(list);
 		list = list->next;
 	}
 	return (written);
