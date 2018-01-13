@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 18:00:08 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 15:56:19 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 18:20:10 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ static int		assign_length(const char *format, int count, t_plist *list)
 	char c;
 	list->length[0] = format[count++];
 	if (is_printf_length(format[count])
-			&& (c = format[count]) && (c == 'l' || c == 'h')
-			&& format[count - 1] == c)
-		{
-			list->length[1] = c;
-			count++;
-		}
+		&& (c = format[count]) && (c == 'l' || c == 'h')
+		&& format[count - 1] == c)
+	{
+		list->length[1] = c;
+		count++;
+	}
 	else
 		list->length[1] = '\0';
 	return (count);

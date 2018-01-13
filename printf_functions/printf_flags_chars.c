@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 12:22:17 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 18:28:51 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 char	*printf_flags_chars(t_plist *list)
 {
 	char temp;
-
 	if (list->type == 'C' || list->type == 'c')
 	{
+		if (list->arg == 0)
+			list->ischarexception = 1;
 		temp = (char)list->arg;
 		list->arg = ft_strnew(1);
 		((char*)list->arg)[0] = temp;
