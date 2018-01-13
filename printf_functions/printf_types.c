@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_type_d.c                                 :+:      :+:    :+:   */
+/*   printf_types.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/09 18:26:42 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 17:10:11 by mfonteni         ###   ########.fr       */
+/*   Created: 2018/01/13 19:07:24 by mfonteni          #+#    #+#             */
+/*   Updated: 2018/01/13 19:07:44 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-
-//TODO : do the %p
 
 static char	*pointer(t_plist *list)
 {
@@ -22,7 +20,7 @@ static char	*pointer(t_plist *list)
 	return (ft_max_itoabase(16, (unsigned long)list->arg, 0));
 }
 
-char *printf_type_d(t_plist *list)
+char		*printf_type_d(t_plist *list)
 {
 	if ((intmax_t)list->arg == 0 && list->precision == 0)
 		return (NULL);
@@ -43,7 +41,7 @@ char *printf_type_d(t_plist *list)
 	return (NULL);
 }
 
-char *printf_type_unsigned(t_plist *list)
+char		*printf_type_unsigned(t_plist *list)
 {
 	int base;
 	int uppercase;

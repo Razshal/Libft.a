@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printflstnew.c                                 :+:      :+:    :+:   */
+/*   printflstnew.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/02 14:12:13 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 17:57:03 by mfonteni         ###   ########.fr       */
+/*   Created: 2018/01/13 19:02:39 by mfonteni          #+#    #+#             */
+/*   Updated: 2018/01/13 19:08:19 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "../includes/libft.h"
 
-t_plist	*printflstnew(void	*arg)
+t_plist	*printflstnew(void *arg)
 {
 	t_plist	*newlist;
 

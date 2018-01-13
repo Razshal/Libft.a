@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:29:49 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/12 19:20:53 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 18:58:12 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	printf_flag_hash(t_plist *list)
 {
-	int leftalign;
-	char *temp;
+	int		leftalign;
+	char	*temp;
 
 	temp = NULL;
 	leftalign = (ft_strchr(list->flag, '-') ? 1 : 0);
