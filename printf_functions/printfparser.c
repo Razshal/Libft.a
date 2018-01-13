@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 18:00:08 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/12 16:12:48 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 15:56:19 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ static int		parse_one(t_plist **list, const char *format, va_list ap)
 	if (is_printf_type(format[count]))
 	{
 		current->type = format[count++];
-		current->arg = va_arg(ap, void*);
-		current->isrealarg = 1;
+		current->arg = (current->type != '%' ? va_arg(ap, void*) : NULL);
+		current->isrealarg = (current->type == '%' ? 0 : 1);
 	}
 	printflstadd(list, current);
 	return (count);

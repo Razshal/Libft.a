@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 18:26:42 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 14:19:45 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 17:10:11 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ char *printf_type_unsigned(t_plist *list)
 	uppercase = (list->type == 'X' ? 1 : 0);
 	base = (list->type == 'x' || list->type == 'X' || list->type == 'p' ? 16 :
 			(list->type == 'o' ? 8 : 10));
-	if (list->type == 'p')
-		return (pointer(list));
-	if ((intmax_t)list->arg == 0 && list->precision == 0)
+	if ((uintmax_t)list->arg == 0 && list->precision == 0)
 		return (NULL);
-	if (!(list->length[0]))
+	else if (list->type == 'p')
+		return (pointer(list));
+	else if (!(list->length[0]))
 		return (ft_umax_itoabase(base, (unsigned int)list->arg, uppercase));
-	if (check_hconv(list))
+	else if (check_hconv(list))
 		return (ft_umax_itoabase(base, (unsigned short)list->arg, uppercase));
 	else if (list->length[0] == 'h' && list->length[1] == 'h')
 		return (ft_umax_itoabase(base, (unsigned char)list->arg, uppercase));
