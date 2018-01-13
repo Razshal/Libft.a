@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 18:34:52 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 18:48:41 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ static int		chars_printer(t_plist *list)
 	percent = '%';
 	if (list->type == '%')
 		return (write(1, &percent, 1));
-	if (list->ischarexception)
+	else if (list->ischarexception)
 		return (char_exception(list));
 	else if (list->type == 's' && !check_lconv(list))
 	{
-		ft_putstr((char*)(list->arg));
+		ft_putstr(list->arg);
 		return (ft_strlen(list->arg));
 	}
 	else if ((list->type == 'S') ||
@@ -108,6 +108,7 @@ static int		print_controller(t_plist *list)
 			number_controller(list);
 			printf_flags_num(list);
 			list->type = 's';
+			list->length[0] = '\0';
 		}
 		written += chars_printer(list);
 		list = list->next;
