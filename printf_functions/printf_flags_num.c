@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/12 19:47:22 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 15:20:56 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,19 @@ void		printf_flags_num(t_plist *list)
 	char zeroorspace;
 
 	rightalign = (ft_strchr(list->flag, '-') ? 0 : 1);
-	zeroorspace = list->precision == -1 && list->width ? '0' : ' ';
+	zeroorspace = (list->precision == -1 && list->width ? '0' : ' ');
 	if (list->precision > -1 &&
 			(ft_strlen(list->arg) < (size_t)list->precision))
 		ft_straddchar(list, 1, '0', (size_t)list->precision);
 	if (is_octal_or_hex(list->type) && zeroorspace == ' ')
 		printf_flag_hash(list);
 	if (list->width != 0 && (size_t)list->width > ft_strlen(list->arg))
-		ft_straddchar(list, rightalign, zeroorspace, 
+		ft_straddchar(list, rightalign, zeroorspace,
 				(size_t)list->width);
 	if (is_octal_or_hex(list->type) && zeroorspace == '0')
 		printf_flag_hash(list);
 	if ((ft_strchr(list->flag, ' ') || ft_strchr(list->flag, '+'))
-			&& is_signed(list->type))
+									&& is_signed(list->type))
 		ft_straddchar(list, 1,
 				(ft_strchr(list->flag, '+') ? '+' : ' '), 1);
 }

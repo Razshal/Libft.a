@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/12 19:43:49 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 14:52:41 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ int				check_hconv(t_plist *list);
 int				check_lconv(t_plist *list);
 char			*printf_type_d(t_plist *list);
 char			*printf_type_unsigned(t_plist *list);
-char			*base_table(int base, int isupper);
 int				ischartype(char c);
 void			printf_flag_hash(t_plist *list);
 void			printf_flags_num(t_plist *list);

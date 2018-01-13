@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 12:07:57 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 17:41:49 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 14:54:21 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,25 @@ char		*ft_itoa(int n)
 	return (str);
 }
 
-char	*base_table(int base, int isupper)
+static char	*base_table(int isupper)
 {
 	char *tab;
 	int count;
 
-	tab = ft_strnew(base + 1);
+	tab = ft_strnew(17);
 	count = 0;
 	tab[0] = count++ + '0';
-	while (count < 10 && count <= base)
+	while (count < 10)
 	{
 		tab[count] = count + '0';
 		count++;
 	}
-	while (count >= 10 && count < base)
+	while (count < 16)
 	{
-		tab[count] = count - 10 + (isupper ? 'A' : 'a');
+		tab[count] = (isupper ? 'A' : 'a') + (count - 10);
 		count++;
 	}
+	tab[count] = '\0';
 	return (tab);
 }
 
@@ -72,13 +73,14 @@ char	*ft_umax_itoabase(int base, uintmax_t n, int isupper)
 
 	checkneg = 0;
 	size = ft_max_countdigit_base(n, base) - 1;
-	tab = base_table(base, isupper);
+	tab = base_table(isupper);
 	str = ft_strnew(size);
 	while (str && n)
 	{
 		str[--size] = tab[n % base];
 		n = n / base;
 	}
+	free(tab);
 	return (str);
 }
 
@@ -91,7 +93,7 @@ char	*ft_max_itoabase(int base, intmax_t n, int isupper)
 
 	checkneg = 0;
 	size = ft_max_countdigit_base(n, base) - 1;
-	tab = base_table(base, isupper);
+	tab = base_table(isupper);
 	if (n < 0)
 	{
 		checkneg = 1;
@@ -106,5 +108,6 @@ char	*ft_max_itoabase(int base, intmax_t n, int isupper)
 		str[--size] = tab[n % base];
 		n = n / base;
 	}
+	free(tab);
 	return (str);
 }

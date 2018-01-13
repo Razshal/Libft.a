@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/12 16:05:45 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 15:20:42 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ static void		number_controller(t_plist *list)
 	}
 	if (list->type == 'i' || list->type == 'd' || list->type == 'D')
 		list->arg = (void*)printf_type_d(list);
-	if (list->type == 'o' || list->type == 'u' || list->type == 'x')
+	else if (list->type == 'o' || list->type == 'u' || list->type == 'x'
+			|| list->type == 'X' || list->type == 'p')
 		list->arg = (void*)printf_type_unsigned(list);
 }
 
