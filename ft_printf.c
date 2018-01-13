@@ -6,12 +6,13 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 18:48:41 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 18:56:23 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 #include <unistd.h>
+
 /*
 static void		printf_debug_printlist(t_plist *list)
 {
@@ -40,6 +41,7 @@ static void		printf_debug_printlist(t_plist *list)
 static int		char_exception(t_plist *list)
 {
 	char zero;
+
 	zero = 0;
 	if (ft_strchr(list->flag, '-'))
 		ft_putstr((char*)(list->arg));
@@ -47,8 +49,8 @@ static int		char_exception(t_plist *list)
 	if (!ft_strchr(list->flag, '-'))
 		ft_putstr((char*)(list->arg));
 	return (ft_strlen(list->arg) + 1);
-
 }
+
 static int		chars_printer(t_plist *list)
 {
 	char percent;
@@ -118,9 +120,9 @@ static int		print_controller(t_plist *list)
 
 int				ft_printf(const char *format, ...)
 {
-	int written;
-	t_plist *instructions_list;
-	va_list ap;
+	int		written;
+	t_plist	*instructions_list;
+	va_list	ap;
 
 	written = 0;
 	va_start(ap, format);

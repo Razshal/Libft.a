@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 12:07:57 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 14:54:21 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 18:59:57 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ char		*ft_itoa(int n)
 
 static char	*base_table(int isupper)
 {
-	char *tab;
-	int count;
+	char	*tab;
+	int		count;
 
 	tab = ft_strnew(17);
 	count = 0;
@@ -64,7 +64,7 @@ static char	*base_table(int isupper)
 	return (tab);
 }
 
-char	*ft_umax_itoabase(int base, uintmax_t n, int isupper)
+char		*ft_umax_itoabase(int base, uintmax_t n, int isupper)
 {
 	char	*str;
 	int		size;
@@ -84,7 +84,7 @@ char	*ft_umax_itoabase(int base, uintmax_t n, int isupper)
 	return (str);
 }
 
-char	*ft_max_itoabase(int base, intmax_t n, int isupper)
+char		*ft_max_itoabase(int base, intmax_t n, int isupper)
 {
 	char	*str;
 	int		size;

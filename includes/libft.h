@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 17:57:01 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 19:02:21 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 # include <string.h>
 # include <stdlib.h>
 # include <stdarg.h>
-#include <stdio.h>
-
-#define BIGGER(value1, value2) (value1 > value2 ? value1 : value2)
+# include <stdio.h>
+# define BIGGER(value1, value2) (value1 > value2 ? value1 : value2)
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -109,7 +108,7 @@ typedef struct	s_plist
 	char				type;
 	int					isrealarg;
 	int					ischarexception;
-	struct s_plist	*next;
+	struct s_plist		*next;
 }				t_plist;
 
 t_plist			*printflstnew(void *arg);
