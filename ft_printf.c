@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 17:51:09 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 18:15:05 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int				ft_printf(const char *format, ...)
 	written = 0;
 	va_start(ap, format);
 	instructions_list = parse_input(format, ap);
+//	printf_debug_printlist(instructions_list);
 	written = print_controller(instructions_list);
 	va_end(ap);
 	return (written);

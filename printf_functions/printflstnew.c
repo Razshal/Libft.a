@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 14:12:13 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 19:54:59 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 17:57:03 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_plist	*printflstnew(void	*arg)
 	newlist->length = ft_strnew(2);
 	newlist->type = -1;
 	newlist->isrealarg = 0;
+	newlist->ischarexception = 0;
 	newlist->next = NULL;
 	return (newlist);
 }

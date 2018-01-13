@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:13:53 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/11 17:20:20 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 18:11:41 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	printflstadd(t_plist **alst, t_plist *new)
 {
 	t_plist *current;
 
-	current = *alst;
 	if (!new)
 		return;
 	if (!*alst)
 		*alst = new;
 	else
 	{
+		current = *alst;
 		while (current->next)
 			current = current->next;
 		current->next = new;
