@@ -4,3 +4,4 @@ a.out
 main.c
 *.swp
 *.swo
+*.ghc
