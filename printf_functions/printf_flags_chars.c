@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/12 19:47:09 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 12:22:17 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 char	*printf_flags_chars(t_plist *list)
 {
-	int precision;
-	size_t spaces;
 	char temp;
 
 	if (list->type == 'C' || list->type == 'c')
@@ -25,12 +23,10 @@ char	*printf_flags_chars(t_plist *list)
 		((char*)list->arg)[0] = temp;
 		list->type += 16;
 	}
-	precision = (list->precision != -1 && list->type != 'c'
-			&& list->type != 'C' ? list->precision : -1);
-	spaces = (precision > -1 ? list->width - precision : list->width);
-	if (precision > -1 && (size_t)precision < ft_strlen(list->arg))
-		((char*)list->arg)[precision] = '\0';
-	if (ft_strlen(list->arg) < spaces)
-		ft_straddchar(list, (ft_strchr(list->flag, '-') ? 1 : 0), ' ', spaces);
+	if (list->precision > -1 && (size_t)list->precision < ft_strlen(list->arg))
+		((char*)list->arg)[list->precision] = '\0';
+	if (ft_strlen(list->arg) < (size_t)list->width)
+		ft_straddchar(list, (ft_strchr(list->flag, '-') ? 0 : 1),' ',
+				(size_t)list->width);
 	return (list->arg);
 }

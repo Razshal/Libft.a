@@ -6,13 +6,20 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 18:26:42 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/12 19:37:46 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/13 13:04:10 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
 //TODO : do the %p
+
+static char	*pointer(t_plist *list)
+{
+	list->arg = &list->arg;
+	list->type = 'x';
+	return (ft_max_itoabase(16, (unsigned long)list->arg, 0));
+}
 
 char *printf_type_d(t_plist *list)
 {
@@ -39,10 +46,12 @@ char *printf_type_unsigned(t_plist *list)
 {
 	int base;
 	int uppercase;
-	
+
 	uppercase = (list->type == 'X' ? 1 : 0);
-	base = (list->type == 'x' || list->type == 'X' ? 16 :
+	base = (list->type == 'x' || list->type == 'X' || list->type == 'p' ? 16 :
 			(list->type == 'o' ? 8 : 10));
+	if (list->type == 'p')
+		return (pointer(list));
 	if ((intmax_t)list->arg == 0 && list->precision == 0)
 		return (NULL);
 	if (!(list->length[0]))
