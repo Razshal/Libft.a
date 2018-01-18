@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 19:07:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 19:07:44 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/18 14:18:10 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ static char	*pointer(t_plist *list)
 	list->flag[0] = '#';
 	list->flag[1] = '\0';
 	return (ft_max_itoabase(16, (unsigned long)list->arg, 0));
+}
+
+static int	whatbaseisit(t_plist *list)
+{
+	if (list->type == 'x' || list->type == 'X' || list->type == 'p')
+		return (16);
+	else if (list->type == 'o')
+		return (8);
+	return (10);
 }
 
 char		*printf_type_d(t_plist *list)
@@ -47,8 +56,7 @@ char		*printf_type_unsigned(t_plist *list)
 	int uppercase;
 
 	uppercase = (list->type == 'X' ? 1 : 0);
-	base = (list->type == 'x' || list->type == 'X' || list->type == 'p' ? 16 :
-			(list->type == 'o' ? 8 : 10));
+	base = whatbaseisit(list);
 	if ((uintmax_t)list->arg == 0 && list->precision == 0)
 		return (NULL);
 	else if (list->type == 'p')

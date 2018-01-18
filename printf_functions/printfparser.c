@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 18:00:08 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 18:20:10 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/18 16:37:00 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int		assign_digit(const char *format, int count, t_plist *list)
 static int		assign_length(const char *format, int count, t_plist *list)
 {
 	char c;
+
 	list->length[0] = format[count++];
 	if (is_printf_length(format[count])
 		&& (c = format[count]) && (c == 'l' || c == 'h')
@@ -61,8 +62,8 @@ static int		parse_flags(const char *format, int count, t_plist *list)
 
 static int		parse_one(t_plist **list, const char *format, va_list ap)
 {
-	int count;
-	t_plist *current;
+	int		count;
+	t_plist	*current;
 
 	count = 0;
 	current = printflstnew(NULL);
@@ -81,13 +82,13 @@ static int		parse_one(t_plist **list, const char *format, va_list ap)
 	{
 		current->type = format[count++];
 		current->arg = (current->type != '%' ? va_arg(ap, void*) : NULL);
-		current->isrealarg = (current->type == '%' ? 0 : 1);
+		current->isrealarg = 1;
 	}
 	printflstadd(list, current);
 	return (count);
 }
 
-t_plist		*parse_input(const char *format, va_list ap)
+t_plist			*parse_input(const char *format, va_list ap)
 {
 	int		count;
 	int		cutcount;
@@ -108,8 +109,7 @@ t_plist		*parse_input(const char *format, va_list ap)
 						printfaddstr(format, cutcount, count));
 			}
 			count++;
-			count = count + parse_one(&local, &format[count], ap);
-			cutcount = count;
+			cutcount = (count = count + parse_one(&local, &format[count], ap));
 		}
 	}
 	printflstadd(&local, printfaddstr(format, cutcount, count));

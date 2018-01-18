@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 18:56:23 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/18 16:45:12 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,7 @@ static int		char_exception(t_plist *list)
 
 static int		chars_printer(t_plist *list)
 {
-	char percent;
-
-	percent = '%';
-	if (list->type == '%')
-		return (write(1, &percent, 1));
-	else if (list->ischarexception)
+	if (list->ischarexception)
 		return (char_exception(list));
 	else if (list->type == 's' && !check_lconv(list))
 	{
@@ -76,11 +71,20 @@ static int		chars_printer(t_plist *list)
 
 static void		number_controller(t_plist *list)
 {
+	int count;
+
+	count = 0;
 	if (ft_isupper(list->type) && list->type != 'X')
 	{
 		list->type = ft_tolower(list->type);
 		list->length[0] = 'l';
 		list->length[1] = '\0';
+	}
+	if (list->arg == 0 && ft_strchr(list->flag, '#'))
+	{
+		while (list->flag[count] != '#')
+			count++;
+		list->flag[count] = 'n';
 	}
 	if (list->type == 'i' || list->type == 'd' || list->type == 'D')
 		list->arg = (void*)printf_type_d(list);
@@ -105,7 +109,7 @@ static int		print_controller(t_plist *list)
 				printf_flags_chars(list);
 			}
 		}
-		else if (!(list->type == '%'))
+		else
 		{
 			number_controller(list);
 			printf_flags_num(list);
