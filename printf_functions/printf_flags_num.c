@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/18 17:22:48 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/18 18:05:09 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	is_octal_or_hex(char c)
 	return (0);
 }
 
-void		ft_straddchar(t_plist *list, int totheright, char c, size_t toadd)
+static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
 {
 	char	*newstr;
 	size_t	count;
@@ -34,25 +34,25 @@ void		ft_straddchar(t_plist *list, int totheright, char c, size_t toadd)
 
 	newstr = NULL;
 	count = 0;
+	checkneg = 0;
+	if (((char*)list->arg)[0] == '-' && c == '0' && (checkneg = 1))
+		list->arg = ft_noleaks_strndup(list->arg, 1);
 	if (list->arg && toadd > 0)
 	{
-		if (c == '+' && ((char*)list->arg)[0] == '-')
-			return ;
 		if (!(newstr = (ft_strnew(ft_strlen(list->arg) + toadd + 1))))
 			return ;
-		checkneg = (c == '0' && ((char*)list->arg)[0] == '-' ? 1 : 0);
-		if (!totheright)
+		if (!align)
 			ft_strcat(newstr, list->arg);
 		count = ft_strlen(newstr);
 		while (toadd--)
 			newstr[count++] = c;
-		if (totheright)
+		if (align)
 			ft_strcat(newstr, list->arg);
 		ft_memdel((void*)&list->arg);
 		list->arg = newstr;
-		if (checkneg)
-			ft_straddchar(list, totheright, '-', 1);
 	}
+	if (checkneg)
+		ft_straddchar(list, 1, '-', 1);
 }
 
 void		printf_flags_num(t_plist *list)
@@ -79,7 +79,7 @@ void		printf_flags_num(t_plist *list)
 	if (is_octal_or_hex(list->type) && zeroorspace == '0')
 		printf_flag_hash(list);
 	if ((ft_strchr(list->flag, ' ') || ft_strchr(list->flag, '+'))
-									&& is_signed(list->type))
+			&& is_signed(list->type) && !(((char*)list->arg)[0] == '-'))
 		ft_straddchar(list, 1,
 				(ft_strchr(list->flag, '+') ? '+' : ' '), 1);
 }

@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 19:02:21 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/18 18:03:23 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t			ft_strlen(const char *s);
 char			*ft_strdup(const char *s1);
+char			*ft_noleaks_strndup(char *s1, size_t n);
 char			*ft_strcpy(char *dst, const char *src);
 char			*ft_strncpy(char *dst, const char *src, size_t len);
 char			*ft_strcat(char *s1, const char *s2);
@@ -132,6 +133,4 @@ int				ischartype(char c);
 void			printf_flag_hash(t_plist *list);
 void			printf_flags_num(t_plist *list);
 char			*printf_flags_chars(t_plist *list);
-void			ft_straddchar(t_plist *list,
-					int totheright, char c, size_t toadd);
 #endif

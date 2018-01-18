@@ -6,11 +6,34 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/18 16:58:01 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/18 17:47:40 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+
+static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
+{
+	char	*newstr;
+	size_t	count;
+
+	newstr = NULL;
+	count = 0;
+	if (list->arg && toadd > 0)
+	{
+		if (!(newstr = (ft_strnew(ft_strlen(list->arg) + toadd + 1))))
+			return ;
+		if (!align)
+			ft_strcat(newstr, list->arg);
+		count = ft_strlen(newstr);
+		while (toadd--)
+			newstr[count++] = c;
+		if (align)
+			ft_strcat(newstr, list->arg);
+		ft_memdel((void*)&list->arg);
+		list->arg = newstr;
+	}
+}
 
 char	*printf_flags_chars(t_plist *list)
 {
