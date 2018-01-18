@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 19:07:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/18 14:18:10 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/18 17:10:53 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static int	whatbaseisit(t_plist *list)
 
 char		*printf_type_d(t_plist *list)
 {
-	if ((intmax_t)list->arg == 0 && list->precision == 0)
-		return (NULL);
-	if (!(list->length[0]) && !(list->type == 'D'))
+	if (list->arg == 0)
+		return (list->precision == 0 ? NULL : ft_itoa(0));
+	else if (!(list->length[0]) && !(list->type == 'D'))
 		return (ft_max_itoabase(10, (int)list->arg, 0));
 	else if (check_hconv(list))
 		return (ft_max_itoabase(10, (short)list->arg, 0));
@@ -57,8 +57,8 @@ char		*printf_type_unsigned(t_plist *list)
 
 	uppercase = (list->type == 'X' ? 1 : 0);
 	base = whatbaseisit(list);
-	if ((uintmax_t)list->arg == 0 && list->precision == 0)
-		return (NULL);
+	if (list->arg == 0)
+		return (list->precision == 0 ? NULL : ft_itoa(0));
 	else if (list->type == 'p')
 		return (pointer(list));
 	else if (!(list->length[0]))

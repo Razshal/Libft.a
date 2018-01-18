@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/18 16:18:47 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/18 17:22:48 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static int	is_octal_or_hex(char c)
 	return (0);
 }
 
-
 void		ft_straddchar(t_plist *list, int totheright, char c, size_t toadd)
 {
 	char	*newstr;
 	size_t	count;
+	int		checkneg;
 
 	newstr = NULL;
 	count = 0;
@@ -40,6 +40,7 @@ void		ft_straddchar(t_plist *list, int totheright, char c, size_t toadd)
 			return ;
 		if (!(newstr = (ft_strnew(ft_strlen(list->arg) + toadd + 1))))
 			return ;
+		checkneg = (c == '0' && ((char*)list->arg)[0] == '-' ? 1 : 0);
 		if (!totheright)
 			ft_strcat(newstr, list->arg);
 		count = ft_strlen(newstr);
@@ -49,6 +50,8 @@ void		ft_straddchar(t_plist *list, int totheright, char c, size_t toadd)
 			ft_strcat(newstr, list->arg);
 		ft_memdel((void*)&list->arg);
 		list->arg = newstr;
+		if (checkneg)
+			ft_straddchar(list, totheright, '-', 1);
 	}
 }
 
