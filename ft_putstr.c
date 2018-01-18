@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 19:16:13 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/16 17:34:59 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/18 18:48:41 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 
 void	ft_putstr(char const *s)
 {
-	int count;
-
-	count = -1;
 	if (s)
-	{
-		while (s[++count] != '\0')
-			ft_putchar(s[count]);
-	}
+		write(1, s, ft_strlen(s));
 }
