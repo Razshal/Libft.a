@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/18 16:45:12 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/18 18:38:24 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void		printf_debug_printlist(t_plist *list)
 		printf("precision:%d\n", list->precision);
 		printf("length:%s\n", list->length);
 		printf("type:%c\n\n", list->type);
+		ft_putendl("#############################");
 	}
 	if (list->next)
 	{

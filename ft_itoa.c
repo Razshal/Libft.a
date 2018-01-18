@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 12:07:57 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/18 17:09:20 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/18 18:14:20 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char		*ft_itoa(int n)
 		checkneg = 1;
 		num = -num;
 	}
-	if ((str = (char*)malloc(sizeof(char) * (size + 1))) == NULL)
+	if (!(str = ft_strnew(size)))
 		return (NULL);
 	if (checkneg)
 		str[0] = '-';

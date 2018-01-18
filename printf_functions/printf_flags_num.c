@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/18 18:05:09 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/18 18:40:44 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void		printf_flags_num(t_plist *list)
 		((char*)list->arg)[0] = '%';
 	}
 	rightalign = (ft_strchr(list->flag, '-') ? 0 : 1);
-	zeroorspace = (list->precision == -1 && list->width ? '0' : ' ');
+	zeroorspace = (list->precision == -1 && list->width != 0 ? ' ' : '0');
 	if (list->precision > -1 &&
 			(ft_strlen(list->arg) < (size_t)list->precision))
 		ft_straddchar(list, 1, '0',
