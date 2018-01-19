@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/18 19:14:27 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/19 15:36:54 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void		printf_flags_num(t_plist *list)
 		((char*)list->arg)[0] = '%';
 	}
 	rightalign = (ft_strchr(list->flag, '-') ? 0 : 1);
-	zeroorspace = (list->precision == -1 && list->width != 0 ? ' ' : '0');
+	zeroorspace = (list->precision == -1 && list->width != 0 &&
+			!ft_strchr(list->flag, '0') ? ' ' : '0');
 	if (list->precision > -1 &&
 			(ft_strlen(list->arg) < (size_t)list->precision))
 		ft_straddchar(list, 1, '0',
@@ -74,8 +75,7 @@ void		printf_flags_num(t_plist *list)
 	if (is_octal_or_hex(list->type) && zeroorspace == ' ')
 		printf_flag_hash(list);
 	if (list->width != 0 && (size_t)list->width > ft_strlen(list->arg))
-		ft_straddchar(list, rightalign, ' ',
-				(size_t)list->width - ft_strlen(list->arg));
+		ft_straddchar(list, rightalign, (ft_strchr(list->flag, '0') ? '0' : ' ')		,(size_t)list->width - ft_strlen(list->arg));
 	if (is_octal_or_hex(list->type) && zeroorspace == '0')
 		printf_flag_hash(list);
 	if ((ft_strchr(list->flag, ' ') || ft_strchr(list->flag, '+'))

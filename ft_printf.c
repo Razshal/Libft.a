@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/18 18:38:24 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/19 16:39:59 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,12 @@ static int		chars_printer(t_plist *list)
 {
 	if (list->ischarexception)
 		return (char_exception(list));
-	else if (list->type == 's' && !check_lconv(list))
+	else if (list->type != 'S' && list->type != 'C'  && !check_lconv(list))
 	{
 		ft_putstr(list->arg);
 		return (ft_strlen(list->arg));
 	}
-	else if ((list->type == 'S') ||
-			(list->type == 's' && check_lconv(list)))
+	else if ((list->type == 'S') || (list->type == 's' && check_lconv(list)))
 	{
 		ft_putwstr((wchar_t*)(list->arg));
 		return (ft_strlen(list->arg));
@@ -105,7 +104,8 @@ static int		print_controller(t_plist *list)
 		{
 			if (list->isrealarg)
 			{
-				if (list->type == 'S' || list->type == 's')
+				if ((list->type == 'S' || list->type == 's')
+						&& list->arg != NULL)
 					list->arg = ft_strdup(list->arg);
 				printf_flags_chars(list);
 			}
@@ -114,7 +114,6 @@ static int		print_controller(t_plist *list)
 		{
 			number_controller(list);
 			printf_flags_num(list);
-			list->type = 's';
 			list->length[0] = '\0';
 		}
 		written += chars_printer(list);

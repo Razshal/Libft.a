@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 18:00:08 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/19 14:40:54 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/19 16:34:49 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,7 @@ t_plist			*parse_input(const char *format, va_list ap)
 		if (format[count] == '%')
 		{
 			if (count > 0)
-			{
-				printflstadd(&local,
-						printfaddstr(format, cutcount, count));
-			}
+				printflstadd(&local, printfaddstr(format, cutcount, count));
 			count++;
 			cutcount = (count = count + parse_one(&local, &format[count], ap));
 		}
