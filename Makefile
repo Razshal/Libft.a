@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/01/12 11:19:25 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/01/19 15:27:47 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,6 @@ SRC = ft_atoi.c \
 	  ft_tolower.c \
 	  ft_toupper.c \
 	  ft_printf.c \
-	  ft_max_countdigit.c \
 	  $(PRINTFUNC)printflstadd.c \
 	  $(PRINTFUNC)printfaddstr.c \
 	  $(PRINTFUNC)printfparser.c \

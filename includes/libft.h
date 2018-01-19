@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/18 18:03:23 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/19 15:26:11 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stdio.h>
-# define BIGGER(value1, value2) (value1 > value2 ? value1 : value2)
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -92,6 +91,7 @@ void			ft_print_split(char **tab);
 int				ft_ispace(char c);
 int				ft_countdigit(int n);
 int				ft_max_countdigit_base(intmax_t n, int base);
+int				ft_umax_countdigit_base(uintmax_t n, int base);
 char			*ft_strrev(char *str);
 char			*ft_strlowcase(char *str);
 char			*ft_strupcase(char *str);
