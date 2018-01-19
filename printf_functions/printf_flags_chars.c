@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/19 16:40:18 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/19 17:01:16 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
 
 static void nullexception(t_plist *list)
 {
-	if (list->arg == NULL)
+	if (list->arg == NULL && (list->type == 's' || list->type == 'S'))
 	{
 		list->arg = ft_strnew(6);
 		ft_strcat(list->arg, "(null)");
@@ -51,7 +51,7 @@ char	*printf_flags_chars(t_plist *list)
 	nullexception(list);
 	if (list->type == 'C' || list->type == 'c')
 	{
-		if (list->arg == 0)
+		if (list->arg == 0 || list->arg == NULL)
 			list->ischarexception = 1;
 		temp = (char)list->arg;
 		list->arg = ft_strnew(1);

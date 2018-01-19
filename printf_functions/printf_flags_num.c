@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/19 15:36:54 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/19 16:53:04 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
 	newstr = NULL;
 	count = 0;
 	checkneg = 0;
-	if (((char*)list->arg)[0] == '-' && c == '0' && (checkneg = 1))
+	if (list->arg && ((char*)list->arg)[0] == '-' && c == '0' && (checkneg = 1))
 		list->arg = ft_noleaks_strndup(list->arg, 1);
 	if (list->arg && toadd > 0)
 	{
