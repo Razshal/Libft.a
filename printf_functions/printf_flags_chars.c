@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/19 17:01:16 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/19 18:23:59 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ char	*printf_flags_chars(t_plist *list)
 		((char*)list->arg)[list->precision] = '\0';
 	if (ft_strlen(list->arg) < (size_t)list->width)
 		ft_straddchar(list, (ft_strchr(list->flag, '-') ? 0 : 1), ' '
-				, (size_t)list->width);
+				, (size_t)list->width - ft_strlen(list->arg));
 	return (list->arg);
 }

@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/19 15:26:11 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/19 17:55:44 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ t_plist			*printflstnew(void *arg);
 int				is_printf_flag(char c);
 int				is_printf_length(char c);
 int				is_printf_type(char c);
+int				is_signed(char c);
+int				is_octal_or_hex(char c);
 int				check_lconv (t_plist *list);
 int				check_hconv (t_plist *list);
 void			printflstadd(t_plist **alst, t_plist *new);
