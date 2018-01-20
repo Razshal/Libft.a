@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/19 17:40:37 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/20 12:55:22 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static int		char_exception(t_plist *list)
 	char zero;
 
 	zero = 0;
-	if (ft_strchr(list->flag, '-'))
+	if (!ft_strchr(list->flag, '-'))
 		ft_putstr((char*)(list->arg));
 	write(1, &zero, 1);
-	if (!ft_strchr(list->flag, '-'))
+	if (ft_strchr(list->flag, '-'))
 		ft_putstr((char*)(list->arg));
 	return (ft_strlen(list->arg) + 1);
 }
@@ -132,5 +132,6 @@ int				ft_printf(const char *format, ...)
 //	printf_debug_printlist(instructions_list);
 	written = print_controller(instructions_list);
 	va_end(ap);
+	printflstdel(instructions_list);
 	return (written);
 }

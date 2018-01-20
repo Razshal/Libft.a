@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/19 17:55:44 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/20 12:56:53 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ typedef struct	s_plist
 }				t_plist;
 
 t_plist			*printflstnew(void *arg);
+void			printflstdel(t_plist *list);
 int				is_printf_flag(char c);
 int				is_printf_length(char c);
 int				is_printf_type(char c);

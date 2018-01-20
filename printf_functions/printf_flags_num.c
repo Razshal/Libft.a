@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/19 18:13:22 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/20 12:27:58 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,23 @@ static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
 		ft_straddchar(list, 1, '-', 1);
 }
 
-static int	hashadds(t_plist *list, char zeroorspace)
+static int	futurespaces(t_plist *list, char zeroorspace)
 {
+	int future_spaces;
+
+	future_spaces = 0;
 	if (ft_strchr(list->flag, '#') &&
 			!(is_octal_or_hex(list->type) && zeroorspace == ' '))
 	{
 		if (list->type == 'o')
-			return (1);
+			future_spaces++;
 		else if (list->type == 'x' || list->type == 'X')
-			return (2);
+			future_spaces += 2;
 	}
-	return (0);
+	if ((ft_strchr(list->flag, ' ') || ft_strchr(list->flag, '+'))
+			&& is_signed(list->type) && !(((char*)list->arg)[0] == '-'))
+		future_spaces++;
+	return (future_spaces);
 }
 
 static void	exceptions(t_plist *list, char zeroorspace, int rightalign)
@@ -70,7 +76,7 @@ static void	exceptions(t_plist *list, char zeroorspace, int rightalign)
 	if (list->width != 0 && (size_t)list->width > ft_strlen(list->arg))
 		ft_straddchar(list, rightalign,
 				(ft_strchr(list->flag, '0') ? '0' : ' '), (size_t)list->width
-				- ft_strlen(list->arg) - hashadds(list, zeroorspace));
+				- ft_strlen(list->arg) - futurespaces(list, zeroorspace));
 	if (is_octal_or_hex(list->type) && zeroorspace == '0')
 		printf_flag_hash(list);
 }
@@ -91,6 +97,6 @@ void		printf_flags_num(t_plist *list)
 				(size_t)list->precision - ft_strlen(list->arg));
 	exceptions(list, zeroorspace, rightalign);
 	if ((ft_strchr(list->flag, ' ') || ft_strchr(list->flag, '+'))
-			&& is_signed(list->type) && !(((char*)list->arg)[0] == '-'))
+			&& is_signed(list->type) && !(ft_strchr(list->arg, '-')))
 		ft_straddchar(list, 1, (ft_strchr(list->flag, '+') ? '+' : ' '), 1);
 }
