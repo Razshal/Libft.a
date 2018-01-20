@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/05 12:46:04 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/13 18:55:21 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/20 17:09:04 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_getbyteslength(unsigned int c)
 	return (0);
 }
 
-int			ft_putwchar(unsigned int c)
+int			ft_putwchar(wchar_t c)
 {
 	char	*bytes;
 	int		bytesleft;

@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 19:07:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/19 16:48:42 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/20 16:51:46 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,19 @@ static int	whatbaseisit(t_plist *list)
 	return (10);
 }
 
+static int	checkifnull(t_plist *list)
+{
+	if (list->type == 'o' && ft_strchr(list->flag, '#') && list->arg == 0)
+		return (0);
+	if (list->precision == 0)
+		return (1);
+	return (0);
+}
+
 char		*printf_type_d(t_plist *list)
 {
 	if (list->arg == 0)
-		return (list->precision == 0 ? NULL : ft_max_itoabase(10, 0, 0));
+		return (checkifnull(list) ? NULL : ft_max_itoabase(10, 0, 0));
 	else if (check_hconv(list))
 		return (ft_max_itoabase(10, (short)list->arg, 0));
 	else if (list->length[0] == 'h' && list->length[1] == 'h')
@@ -58,7 +67,7 @@ char		*printf_type_unsigned(t_plist *list)
 	uppercase = (list->type == 'X' ? 1 : 0);
 	base = whatbaseisit(list);
 	if (list->arg == 0)
-		return (list->precision == 0 ? NULL : ft_umax_itoabase(10, 0, 0));
+		return (checkifnull(list) ? NULL : ft_umax_itoabase(10, 0, 0));
 	else if (list->type == 'p')
 		return (pointer(list));
 	else if (check_hconv(list))

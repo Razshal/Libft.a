@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/20 16:40:58 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/20 17:29:37 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ static void		width(t_plist *list, int rightalign)
 				- ft_strlen(list->arg) - futurespaces(list, zeroorspace));
 	if (is_octal_or_hex(list->type) && zeroorspace == '0')
 		printf_flag_hash(list);
+	plusflag(list);
 }
 
 void		printf_flags_num(t_plist *list)
@@ -127,5 +128,4 @@ void		printf_flags_num(t_plist *list)
 				- ft_strlen(list->arg) + isneg);
 	}
 	width(list, rightalign);
-	plusflag(list);
 }
