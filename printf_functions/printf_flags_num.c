@@ -6,20 +6,11 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/20 12:27:58 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/20 16:11:33 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-
-static void	percent_exception(t_plist *list)
-{
-	if (list->type == '%')
-	{
-		list->arg = ft_strnew(1);
-		((char*)list->arg)[0] = '%';
-	}
-}
 
 static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
 {
@@ -50,7 +41,7 @@ static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
 		ft_straddchar(list, 1, '-', 1);
 }
 
-static int	futurespaces(t_plist *list, char zeroorspace)
+static int		futurespaces(t_plist *list, char zeroorspace)
 {
 	int future_spaces;
 
@@ -69,13 +60,42 @@ static int	futurespaces(t_plist *list, char zeroorspace)
 	return (future_spaces);
 }
 
-static void	exceptions(t_plist *list, char zeroorspace, int rightalign)
+
+static void		plusflag(t_plist *list)
 {
+	int		count;
+	char	temp;
+
+	count = 0;
+	if ((ft_strchr(list->flag, ' ') || ft_strchr(list->flag, '+'))
+			&& is_signed(list->type) && !(ft_strchr(list->arg, '-')))
+	{
+		while (!ft_isdigit(((char*)list->arg)[count]))
+			count++;
+		if (count > 0)
+		{
+			temp = ((char*)list->arg)[count - 1];
+			((char*)list->arg)[count - 1] =
+				(ft_strchr(list->flag, '+') ? '+' : ' ');
+			ft_straddchar(list, 1, temp, 1);
+		}
+		else
+			ft_straddchar(list, 1,
+					(ft_strchr(list->flag, '+') ? '+' : ' '), 1);
+		
+	}
+}
+
+static void		width(t_plist *list, int rightalign)
+{
+	char zeroorspace;
+	
+	zeroorspace = (list->precision == -1 && list->width != 0 &&
+			ft_strchr(list->flag, '0') ? '0' : ' ');
 	if (is_octal_or_hex(list->type) && zeroorspace == ' ')
 		printf_flag_hash(list);
 	if (list->width != 0 && (size_t)list->width > ft_strlen(list->arg))
-		ft_straddchar(list, rightalign,
-				(ft_strchr(list->flag, '0') ? '0' : ' '), (size_t)list->width
+		ft_straddchar(list, rightalign, zeroorspace, (size_t)list->width
 				- ft_strlen(list->arg) - futurespaces(list, zeroorspace));
 	if (is_octal_or_hex(list->type) && zeroorspace == '0')
 		printf_flag_hash(list);
@@ -84,19 +104,21 @@ static void	exceptions(t_plist *list, char zeroorspace, int rightalign)
 void		printf_flags_num(t_plist *list)
 {
 	int		rightalign;
-	char	zeroorspace;
+	int		isneg;
 
-	percent_exception(list);
+	if (list->type == '%')
+	{
+		list->arg = ft_strnew(1);
+		((char*)list->arg)[0] = '%';
+	}
+	isneg = ((ft_strchr(list->arg, '-') != NULL));
 	rightalign = (ft_strchr(list->flag, '-') ? 0 : 1);
-	zeroorspace = (list->precision == -1 && list->width != 0 &&
-			!ft_strchr(list->flag, '0') ? ' ' : '0');
-
-	if (list->precision > -1 &&
-			(ft_strlen(list->arg) < (size_t)list->precision))
-		ft_straddchar(list, 1, '0',
-				(size_t)list->precision - ft_strlen(list->arg));
-	exceptions(list, zeroorspace, rightalign);
-	if ((ft_strchr(list->flag, ' ') || ft_strchr(list->flag, '+'))
-			&& is_signed(list->type) && !(ft_strchr(list->arg, '-')))
-		ft_straddchar(list, 1, (ft_strchr(list->flag, '+') ? '+' : ' '), 1);
+	if (list->precision > -1
+			&& (size_t)list->precision > (ft_strlen(list->arg) - isneg))
+	{
+		ft_straddchar(list, 1, '0', list->precision
+				- ft_strlen(list->arg) + isneg);
+	}
+	width(list, rightalign);
+	plusflag(list);
 }
