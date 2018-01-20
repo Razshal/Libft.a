@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/20 16:11:33 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/20 16:40:58 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static int		futurespaces(t_plist *list, char zeroorspace)
 	return (future_spaces);
 }
 
-
 static void		plusflag(t_plist *list)
 {
 	int		count;
@@ -106,10 +105,18 @@ void		printf_flags_num(t_plist *list)
 	int		rightalign;
 	int		isneg;
 
-	if (list->type == '%')
+	if (list->type == '%' || list->arg == 0 || list->arg == NULL)
 	{
-		list->arg = ft_strnew(1);
-		((char*)list->arg)[0] = '%';
+		if (list->arg || list->type == '%')
+		{
+			list->arg = ft_strnew(1);
+			((char*)list->arg)[0] = '%';
+		}
+		else if (!list->arg)
+		{
+			list->arg = ft_strnew(1);
+			((char*)list->arg)[0] = '\0';
+		}
 	}
 	isneg = ((ft_strchr(list->arg, '-') != NULL));
 	rightalign = (ft_strchr(list->flag, '-') ? 0 : 1);
