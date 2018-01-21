@@ -6,63 +6,73 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 16:34:03 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 18:34:34 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
+static int	writespaces(int spaces)
 {
-	char	*newstr;
-	size_t	count;
-
-	newstr = NULL;
+	int		count;
+	char	space;
+	
 	count = 0;
-	if (list->arg && toadd > 0)
+	space = ' ';
+	if (spaces > 0)
 	{
-		if (!(newstr = (ft_strnew(ft_strlen(list->arg) + toadd + 1))))
-			return ;
-		if (!align)
-			ft_strcat(newstr, list->arg);
-		count = ft_strlen(newstr);
-		while (toadd--)
-			newstr[count++] = c;
-		if (align)
-			ft_strcat(newstr, list->arg);
-		ft_memdel((void*)&list->arg);
-		list->arg = newstr;
+		while (count++ < spaces)
+			ft_putchar(' ');
 	}
+	return (spaces);
 }
 
-static void nullexception(t_plist *list)
+int		printf_flags_chars(t_plist *list)
 {
+	int written;
+	int towritte;
+
+	written = 0;
+	towritte = (list->precision != -1 && ft_strlen(list->arg) > (size_t)list->precision
+			? list->precision - ft_strlen(list->arg) : ft_strlen(list->arg));
 	if (list->arg == NULL && (list->type == 's' || list->type == 'S'))
+		return (ft_putstrn("(null)", 6));
+	if (!ft_strchr(list->flag, '-') && ft_strlen(list->arg) < (size_t)list->width)
+		written += writespaces(list->width - towritte);
+	if (list->precision > -1 && (size_t)list->precision < ft_strlen(list->arg))
+		written += (list->type == 's' && !check_lconv(list) ?
+				ft_putstrn(list->arg, list->precision) :
+				ft_putwstrn(list->arg, list->precision));
+	else if (list->type == 's')
 	{
-		list->arg = ft_strnew(6);
-		ft_strcat(list->arg, "(null)");
+		ft_putstr(list->arg);
+		written += ft_strlen(list->arg);
 	}
+	else
+		written += ft_putwstr(list->arg);
+	if (ft_strchr(list->flag, '-') && ft_strlen(list->arg) < (size_t)list->width)
+		written += writespaces(list->width - towritte);
+	return (written);
 }
 
-char	*printf_flags_chars(t_plist *list)
+int		printf_flags_char(t_plist *list)
 {
-	wchar_t temp;
+	int written;
 
-	nullexception(list);
-	if (list->type == 'C' || list->type == 'c')
+	written = 0;
+	if (!ft_strchr(list->flag, '-') && 1 < (size_t)list->width)
+		written += writespaces((size_t)list->width - 1);
+	if (list->precision == -1 || (size_t)list->precision > 1)
 	{
-		if (list->arg == 0 || list->arg == NULL)
-			list->ischarexception = 1;
-		temp = (wchar_t)list->arg;
-		list->arg = ft_wstrnew(1);
-		((wchar_t*)list->arg)[0] = temp;
-		list->type += 16;
+		if (list->type == 'c')
+		{
+			ft_putchar((char)list->arg);
+			written += 1;
+		}
+		else
+			written += ft_putwchar((wchar_t)list->arg);
 	}
-	if (list->precision > -1 && (size_t)list->precision < ft_strlen(list->arg))
-		((wchar_t*)list->arg)[list->precision] = '\0';
-	if (ft_strlen(list->arg) < (size_t)list->width)
-		ft_straddchar(list, (ft_strchr(list->flag, '-') ? 0 : 1), ' '
-				, (size_t)list->width - ft_strlen(list->arg)
-				- list->ischarexception);
-	return (list->arg);
+	if (ft_strchr(list->flag, '-') && 1 < (size_t)list->width)
+		written += writespaces((size_t)list->width - 1);
+	return (written);
 }

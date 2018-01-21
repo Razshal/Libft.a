@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 12:09:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 16:14:03 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 17:25:19 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,22 @@ int		ft_putwstr(wchar_t *s)
 	ret = 0;
 	if (s)
 	{
-		while (s[count] != '\0')
+		while (s[count])
+			ret += ft_putwchar((wchar_t)s[count++]);
+	}
+	return (ret);
+}
+
+int		ft_putwstrn(wchar_t *s, int n)
+{
+	int count;
+	int ret;
+
+	count = 0;
+	ret = 0;
+	if (s)
+	{
+		while (s[count] && count < n)
 			ret += ft_putwchar((wchar_t)s[count++]);
 	}
 	return (ret);

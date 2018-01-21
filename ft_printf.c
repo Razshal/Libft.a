@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 16:23:14 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 18:10:27 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,30 +39,22 @@ static void		printf_debug_printlist(t_plist *list)
 }
 */
 
-static int		char_exception(t_plist *list)
-{
-	char zero;
-
-	zero = 0;
-	if (!ft_strchr(list->flag, '-'))
-		ft_putstr((char*)(list->arg));
-	write(1, &zero, 1);
-	if (ft_strchr(list->flag, '-'))
-		ft_putstr((char*)(list->arg));
-	return (ft_strlen(list->arg) + 1);
-}
-
 static int		chars_printer(t_plist *list)
 {
-	if (list->ischarexception)
-		return (char_exception(list));
-	else if (list->type != 'S' && list->type != 'C'  && !check_lconv(list))
+	if (!ischartype(list->type))
 	{
 		ft_putstr(list->arg);
 		return (ft_strlen(list->arg));
 	}
-	else if ((list->type == 'S') || (list->type == 's' && check_lconv(list)))
-		return (ft_putwstr(list->arg));
+	else if (list->isrealarg && (list->type == 'S' || list->type == 's'))
+		return (printf_flags_chars(list));
+	else if (list->isrealarg && (list->type == 'c' || list->type == 'C'))
+		return (printf_flags_char(list));
+	else if (!list->isrealarg)
+	{
+		ft_putstr(list->arg);
+		return (ft_strlen(list->arg));
+	}
 	return (-1);
 }
 
@@ -100,17 +92,7 @@ static int		print_controller(t_plist *list)
 	written = 0;
 	while (list)
 	{
-		if (ischartype(list->type))
-		{
-			if (list->isrealarg)
-			{
-				if ((list->type == 'S' || list->type == 's')
-						&& list->arg != NULL)
-					list->arg = ft_strdup(list->arg);
-				printf_flags_chars(list);
-			}
-		}
-		else
+		if (!ischartype(list->type))
 		{
 			number_controller(list);
 			printf_flags_num(list);
