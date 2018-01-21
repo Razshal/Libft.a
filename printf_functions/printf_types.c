@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 19:07:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/20 16:51:46 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 12:19:09 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static char	*pointer(t_plist *list)
 {
-	list->type = 'x';
 	list->flag[0] = '#';
 	list->flag[1] = '\0';
 	return (ft_max_itoabase(16, (unsigned long)list->arg, 0));

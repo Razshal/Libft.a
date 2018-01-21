@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 17:53:28 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/19 18:03:03 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 12:32:44 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_signed(char c)
 
 int	is_octal_or_hex(char c)
 {
-	if (c == 'x' || c == 'X' || c == 'o')
+	if (c == 'x' || c == 'X' || c == 'o' || c == 'p')
 		return (1);
 	return (0);
 }

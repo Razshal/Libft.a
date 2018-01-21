@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/20 17:29:37 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 12:16:10 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ void		printf_flags_num(t_plist *list)
 	int		rightalign;
 	int		isneg;
 
-	if (list->type == '%' || list->arg == 0 || list->arg == NULL)
+	if (list->type == '%' || list->arg == NULL)
 	{
-		if (list->arg || list->type == '%')
+		if (list->type == '%')
 		{
 			list->arg = ft_strnew(1);
 			((char*)list->arg)[0] = '%';
