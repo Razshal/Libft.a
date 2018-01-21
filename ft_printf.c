@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 14:59:46 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 16:23:14 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,7 @@ static int		chars_printer(t_plist *list)
 		return (ft_strlen(list->arg));
 	}
 	else if ((list->type == 'S') || (list->type == 's' && check_lconv(list)))
-	{
-		ft_putwstr(list->arg);
-		return (ft_strlen(list->arg));
-	}
+		return (ft_putwstr(list->arg));
 	return (-1);
 }
 
@@ -138,5 +135,6 @@ int				ft_printf(const char *format, ...)
 	written = print_controller(instructions_list);
 	va_end(ap);
 	printflstdel(instructions_list);
+//	printf("WRITTEN:%d\n", written); fflush(stdout);
 	return (written);
 }

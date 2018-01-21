@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 15:06:06 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 16:32:38 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int				ft_tolower(int c);
 void			*ft_memalloc(size_t size);
 void			*ft_memdel(void **ap);
 char			*ft_strnew(size_t size);
+wchar_t			*ft_wstrnew(size_t size);
 void			ft_strdel(char **as);
 void			ft_strclr(char *s);
 void			ft_striter(char*s, void (*f)(char*));
@@ -125,7 +126,7 @@ void			printflstadd(t_plist **alst, t_plist *new);
 t_plist			*printfaddstr(const char *str, int start, int end);
 t_plist			*parse_input(const char *format, va_list ap);
 int				ft_putwchar(wchar_t c);
-void			ft_putwstr(wchar_t *s);
+int				ft_putwstr(wchar_t *s);
 char			*ft_max_itoabase(int base, intmax_t n, int isupper);
 char			*ft_umax_itoabase(int base, uintmax_t n, int isupper);
 int				check_hconv(t_plist *list);

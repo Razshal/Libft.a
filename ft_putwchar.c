@@ -22,17 +22,13 @@ int	ft_putwchar(wchar_t c)
 	int bytesleft;
 	int modifier;
 	int length;
-	int written;
 
-	bytes = ft_strnew(6);
+	bytes = ft_strnew(ft_getbyteslength(c));
 	bytesleft = ft_getbyteslength(c);
 	length = bytesleft;
 	modifier = 63;
-	written = 0;
 	if (c <= 127)
 		return (write(1, &c, 1));
-	if (bytesleft > 6)
-		return (-1);
 	while (--bytesleft > 0)
 	{
 		bytes[bytesleft] = 128 | (c & 63);
@@ -40,7 +36,10 @@ int	ft_putwchar(wchar_t c)
 		modifier = modifier >> 1;
 	}
 	bytes[0] = (192 + (16 * (length == 2 ? 0 : length - 1)) | (c & modifier));
-	written = write(1, bytes, length);
+	bytes[length] = '\0';
+	bytesleft = 0;
+	while (bytesleft <= length)
+		write(1, &bytes[bytesleft++], 1);
 	ft_memdel((void*)&bytes);
-	return (written);
+	return (length);
 }
