@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 18:27:18 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 16:56:01 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 19:55:47 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,34 @@ size_t	ft_strlen(const char *s)
 	return (count);
 }
 
+int ft_getbyteslength(wchar_t c)
+{
+	if (c <= 127)
+		return (1);
+	else if (c <= 2047)
+		return (2);
+	else if (c <= 65535)
+		return (3);
+	else if (c <= 2097151)
+		return (4);
+	else if (c <= 67108863)
+		return (5);
+	else if (c <= 2147483647)
+		return (6);
+	return (0);
+}
+
 size_t	ft_wstrlen(const wchar_t *s)
 {
-	unsigned int count;
+	size_t	count;
+	size_t	length;
 
 	count = 0;
+	length = 0;
 	while (s && s[count] != '\0')
+	{
 		count++;
-	return (count);
+		length += ft_getbyteslength(s[count]);
+	}
+	return (length);
 }

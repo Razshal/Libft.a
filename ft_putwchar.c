@@ -1,21 +1,6 @@
 #include "../printf/includes/libft.h"
 #include <unistd.h>
 
-static int ft_getbyteslength(wchar_t c)
-{
-	if (c <= 2047)
-		return (2);
-	else if (c <= 65535)
-		return (3);
-	else if (c <= 2097151)
-		return (4);
-	else if (c <= 67108863)
-		return (5);
-	else if (c <= 2147483647)
-		return (6);
-	return (0);
-}
-
 int	ft_putwchar(wchar_t c)
 {
 	char *bytes;
