@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 12:26:12 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 14:59:46 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int		chars_printer(t_plist *list)
 	}
 	else if ((list->type == 'S') || (list->type == 's' && check_lconv(list)))
 	{
-		ft_putwstr((wchar_t*)(list->arg));
+		ft_putwstr(list->arg);
 		return (ft_strlen(list->arg));
 	}
 	return (-1);

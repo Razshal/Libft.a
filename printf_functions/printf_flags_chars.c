@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/19 18:30:55 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 15:16:47 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,20 @@ static void nullexception(t_plist *list)
 
 char	*printf_flags_chars(t_plist *list)
 {
-	char temp;
+	wchar_t temp;
 
 	nullexception(list);
 	if (list->type == 'C' || list->type == 'c')
 	{
 		if (list->arg == 0 || list->arg == NULL)
 			list->ischarexception = 1;
-		temp = (char)list->arg;
+		temp = (wchar_t)list->arg;
 		list->arg = ft_strnew(1);
-		((char*)list->arg)[0] = temp;
+		((wchar_t*)list->arg)[0] = temp;
 		list->type += 16;
 	}
 	if (list->precision > -1 && (size_t)list->precision < ft_strlen(list->arg))
-		((char*)list->arg)[list->precision] = '\0';
+		((wchar_t*)list->arg)[list->precision] = '\0';
 	if (ft_strlen(list->arg) < (size_t)list->width)
 		ft_straddchar(list, (ft_strchr(list->flag, '-') ? 0 : 1), ' '
 				, (size_t)list->width - ft_strlen(list->arg)
