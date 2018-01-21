@@ -38,7 +38,7 @@ int	ft_putwchar(wchar_t c)
 	bytes[0] = (192 + (16 * (length == 2 ? 0 : length - 1)) | (c & modifier));
 	bytes[length] = '\0';
 	bytesleft = 0;
-	while (bytesleft <= length)
+	while (bytesleft < length)
 		write(1, &bytes[bytesleft++], 1);
 	ft_memdel((void*)&bytes);
 	return (length);

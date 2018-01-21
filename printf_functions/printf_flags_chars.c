@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 18:37:13 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 18:47:34 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ int		printf_flags_chars(t_plist *list)
 	if (list->precision > -1 && (size_t)list->precision < ft_strlen(list->arg))
 		written += (list->type == 's' && !check_lconv(list) ?
 				ft_putstrn(list->arg, list->precision) :
-				ft_putwstrn(list->arg, list->precision));
+				ft_putwstrn((wchar_t*)list->arg, list->precision));
 	else if (list->type == 's')
 	{
 		ft_putstr(list->arg);
 		written += ft_strlen(list->arg);
 	}
 	else
-		written += ft_putwstr(list->arg);
+		written += ft_putwstr((wchar_t*)list->arg);
 	if (ft_strchr(list->flag, '-') && ft_strlen(list->arg) < (size_t)list->width)
 		written += writespaces(list->width - towritte);
 	return (written);
