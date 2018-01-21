@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/20 12:55:22 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/21 12:26:12 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,11 @@ static void		number_controller(t_plist *list)
 		list->length[1] = '\0';
 	}
 	if (list->arg == 0 && ft_strchr(list->flag, '#'))
+	{
 		(ft_strchr(list->flag, '#'))[0] = 'n';
+		if (list->type == 'o')
+			list->precision++;
+	}
 	if (ft_strchr(list->flag, '0') && ft_strchr(list->flag, '-'))
 		(ft_strchr(list->flag, '0'))[0] = 'n';
 	if (list->type == 'i' || list->type == 'd' || list->type == 'D')
@@ -89,6 +93,7 @@ static void		number_controller(t_plist *list)
 	else if (list->type == 'o' || list->type == 'u' || list->type == 'x'
 			|| list->type == 'X' || list->type == 'p')
 		list->arg = (void*)printf_type_unsigned(list);
+	
 }
 
 static int		print_controller(t_plist *list)
