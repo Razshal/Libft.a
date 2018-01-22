@@ -6,38 +6,12 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 18:10:27 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 12:46:30 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 #include <unistd.h>
-
-/*
-static void		printf_debug_printlist(t_plist *list)
-{
-	if (list)
-	{
-		if (list->type == 's')
-			printf("Arg:%s\n", (char*)list->arg);
-		else if (list->type == 'c')
-			printf("Arg:%c\n", (char)list->arg);
-		else
-			printf("arg:%d\n", (int)list->arg);
-		printf("flags:%s\n", list->flag);
-		printf("width:%d\n", list->width);
-		printf("precision:%d\n", list->precision);
-		printf("length:%s\n", list->length);
-		printf("type:%c\n\n", list->type);
-		ft_putendl("#############################");
-	}
-	if (list->next)
-	{
-		list = list->next;
-		printf_debug_printlist(list);
-	}
-}
-*/
 
 static int		chars_printer(t_plist *list)
 {
@@ -88,8 +62,10 @@ static void		number_controller(t_plist *list)
 static int		print_controller(t_plist *list)
 {
 	int written;
+	int errorhandler;
 
 	written = 0;
+	errorhandler = 0;
 	while (list)
 	{
 		if (!ischartype(list->type))
@@ -98,7 +74,11 @@ static int		print_controller(t_plist *list)
 			printf_flags_num(list);
 			list->length[0] = '\0';
 		}
-		written += chars_printer(list);
+		errorhandler = chars_printer(list);
+		if (errorhandler == -1)
+			return (-1);
+		else
+			written += errorhandler;
 		list = list->next;
 	}
 	return (written);
@@ -113,10 +93,8 @@ int				ft_printf(const char *format, ...)
 	written = 0;
 	va_start(ap, format);
 	instructions_list = parse_input(format, ap);
-//	printf_debug_printlist(instructions_list);
 	written = print_controller(instructions_list);
 	va_end(ap);
 	printflstdel(instructions_list);
-//	printf("WRITTEN:%d\n", written); fflush(stdout);
 	return (written);
 }

@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 12:44:04 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 17:59:06 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 14:33:04 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	printflstdel(t_plist *list)
 	next = list->next;
 	while (current)
 	{
-		if (!ischartype(list->type))
+		if (current->isrealarg == 0 || !ischartype(current->type))
 			ft_memdel((void*)&current->arg);
 		ft_memdel((void*)&current->flag);
 		ft_memdel((void*)&current->length);
