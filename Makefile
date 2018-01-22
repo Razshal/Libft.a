@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/01/20 12:54:58 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/01/22 19:58:20 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +93,7 @@ SRC = ft_atoi.c \
 	  $(PRINTFUNC)printf_flag_hash.c \
 	  $(PRINTFUNC)printf_flags_chars.c \
 	  $(PRINTFUNC)printf_flags_num.c \
+	  $(PRINTFUNC)colorparser.c \
 	  ft_putwchar.c \
 	  ft_putwstr.c
 

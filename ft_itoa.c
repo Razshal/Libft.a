@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 12:07:57 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 19:27:25 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 18:46:30 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,8 @@ char		*ft_max_itoabase(int base, intmax_t n, int isupper)
 {
 	char		*str;
 	int			size;
-
 	char		*tab;
 	uintmax_t	num;
-
 
 	size = ft_max_countdigit_base(n, base) - 1;
 	tab = base_table(isupper);

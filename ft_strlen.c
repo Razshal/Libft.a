@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 18:27:18 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 14:39:44 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 18:48:09 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_strlen(const char *s)
 	return (count);
 }
 
-int ft_getbyteslength(wchar_t c)
+int		ft_getbyteslength(wchar_t c)
 {
 	if (c <= 127)
 		return (1);

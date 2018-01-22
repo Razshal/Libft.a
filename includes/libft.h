@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 15:37:41 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 19:56:13 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,4 +145,5 @@ void			printf_flags_num(t_plist *list);
 int				printf_flags_chars(t_plist *list);
 int				printf_flags_char(t_plist *list);
 int				ft_getbyteslength(wchar_t c);
+int				colorprinter(char *str);
 #endif

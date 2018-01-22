@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 17:36:01 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 19:56:18 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ static int		chars_printer(t_plist *list)
 	else if (list->isrealarg && (list->type == 'c' || list->type == 'C'))
 		return (printf_flags_char(list));
 	else if (!list->isrealarg)
-	{
-		ft_putstr(list->arg);
-		return (ft_strlen(list->arg));
-	}
+		colorprinter(list->arg);
 	return (-1);
 }
 
@@ -56,7 +53,6 @@ static void		number_controller(t_plist *list)
 	else if (list->type == 'o' || list->type == 'u' || list->type == 'x'
 			|| list->type == 'X' || list->type == 'p')
 		list->arg = (void*)printf_type_unsigned(list);
-	
 }
 
 static int		print_controller(t_plist *list)
@@ -90,6 +86,8 @@ int				ft_printf(const char *format, ...)
 	t_plist	*instructions_list;
 	va_list	ap;
 
+	if (!format)
+		return (-1);
 	written = 0;
 	va_start(ap, format);
 	instructions_list = parse_input(format, ap);

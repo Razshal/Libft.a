@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 18:20:08 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 18:53:09 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
 
 static void		futurespaces(t_plist *list)
 {
-	int future_spaces;
-	char zeroorspace;
+	int		future_spaces;
+	char	zeroorspace;
 
 	future_spaces = 0;
 	zeroorspace = (list->precision == -1 && list->width != 0 &&
@@ -53,7 +53,7 @@ static void		futurespaces(t_plist *list)
 	{
 		if (list->type == 'o' && list->precision > 1)
 			list->precision--;
-		else if (list->type == 'o' && ft_strchr(list->flag, '0') 
+		else if (list->type == 'o' && ft_strchr(list->flag, '0')
 				&& list->precision == -1)
 			list->width--;
 		else if ((list->type == 'x' || list->type == 'X') && zeroorspace == '0')
@@ -87,14 +87,13 @@ static void		plusflag(t_plist *list)
 		else
 			ft_straddchar(list, 1,
 					(ft_strchr(list->flag, '+') ? '+' : ' '), 1);
-		
 	}
 }
 
 static void		width(t_plist *list, int rightalign)
 {
 	char zeroorspace;
-	
+
 	zeroorspace = (list->precision == -1 && list->width != 0 &&
 			ft_strchr(list->flag, '0') ? '0' : ' ');
 	if (is_octal_or_hex(list->type) && zeroorspace == ' ')
@@ -107,7 +106,7 @@ static void		width(t_plist *list, int rightalign)
 	plusflag(list);
 }
 
-void		printf_flags_num(t_plist *list)
+void			printf_flags_num(t_plist *list)
 {
 	int		rightalign;
 	int		isneg;
@@ -130,9 +129,7 @@ void		printf_flags_num(t_plist *list)
 	rightalign = (ft_strchr(list->flag, '-') ? 0 : 1);
 	if (list->precision > -1 && !(list->type == '%')
 			&& (size_t)list->precision > (ft_strlen(list->arg) - isneg))
-	{
 		ft_straddchar(list, 1, '0', list->precision
 				- ft_strlen(list->arg) + isneg);
-	}
 	width(list, rightalign);
 }

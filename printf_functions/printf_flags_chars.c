@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 16:40:26 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 18:52:44 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	writespaces(int spaces)
 {
 	int		count;
 	char	space;
-	
+
 	count = 0;
 	space = ' ';
 	if (spaces > 0)
@@ -69,7 +69,7 @@ int			printf_flags_chars(t_plist *list)
 	return (written);
 }
 
-int		printf_flags_char(t_plist *list)
+int			printf_flags_char(t_plist *list)
 {
 	int written;
 

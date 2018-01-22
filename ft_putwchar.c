@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putwchar.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/22 18:47:04 by mfonteni          #+#    #+#             */
+/*   Updated: 2018/01/22 18:47:49 by mfonteni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../printf/includes/libft.h"
 #include <unistd.h>
 
-int	ft_putwchar(wchar_t c)
+int		ft_putwchar(wchar_t c)
 {
-	char *bytes;
-	int bytesleft;
-	int modifier;
-	int length;
+	char	*bytes;
+	int		bytesleft;
+	int		modifier;
+	int		length;
 
 	bytes = ft_strnew(ft_getbyteslength(c));
 	bytesleft = ft_getbyteslength(c);
@@ -31,10 +43,10 @@ int	ft_putwchar(wchar_t c)
 
 char	*ft_getwchar(wchar_t c)
 {
-	char *bytes;
-	int bytesleft;
-	int modifier;
-	int length;
+	char	*bytes;
+	int		bytesleft;
+	int		modifier;
+	int		length;
 
 	bytes = ft_strnew(ft_getbyteslength(c));
 	bytesleft = ft_getbyteslength(c);
