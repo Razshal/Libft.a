@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:40:51 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 13:08:02 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 15:45:03 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ static int	goodstrlen(t_plist *list)
 int			printf_flags_chars(t_plist *list)
 {
 	int written;
-	int towritte;
+	int towrite;
 
 	written = 0;
-	towritte = (list->precision != -1 && goodstrlen(list) > list->precision
-			? goodstrlen(list) - list->precision : goodstrlen(list));
+	towrite = (list->precision > -1 && goodstrlen(list) > list->precision
+			? list->precision : goodstrlen(list));
 	if (list->arg == NULL && (list->type == 's' || list->type == 'S'))
 		return (ft_putstrn("(null)", 6));
-	if (!ft_strchr(list->flag, '-') && goodstrlen(list) < list->width)
-		written += writespaces(list->width - towritte);
+	if (!ft_strchr(list->flag, '-') && towrite < list->width)
+		written += writespaces(list->width - towrite);
 	if (list->precision > -1 && list->precision < goodstrlen(list))
 		written += (list->type == 's' && !check_lconv(list) ?
 				ft_putstrn(list->arg, list->precision) :
@@ -63,8 +63,8 @@ int			printf_flags_chars(t_plist *list)
 	}
 	else
 		written += ft_putwstr((wchar_t*)list->arg);
-	if (ft_strchr(list->flag, '-') && goodstrlen(list) < list->width)
-		written += writespaces(list->width - towritte);
+	if (ft_strchr(list->flag, '-') && towrite < list->width)
+		written += writespaces(list->width - towrite);
 	return (written);
 }
 
@@ -75,16 +75,13 @@ int		printf_flags_char(t_plist *list)
 	written = 0;
 	if (!ft_strchr(list->flag, '-') && 1 < (size_t)list->width)
 		written += writespaces((size_t)list->width - 1);
-	if (list->precision == -1 || (size_t)list->precision > 1)
+	if (list->type == 'c' && !check_lconv(list))
 	{
-		if (list->type == 'c' && !check_lconv(list))
-		{
-			ft_putchar((char)list->arg);
-			written += 1;
-		}
-		else
-			written += ft_putwchar((wchar_t)list->arg);
+		ft_putchar((char)list->arg);
+		written += 1;
 	}
+	else
+		written += ft_putwchar((wchar_t)list->arg);
 	if (ft_strchr(list->flag, '-') && 1 < (size_t)list->width)
 		written += writespaces((size_t)list->width - 1);
 	return (written);

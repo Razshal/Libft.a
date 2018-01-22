@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 19:44:33 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 15:37:41 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void			printflstadd(t_plist **alst, t_plist *new);
 t_plist			*printfaddstr(const char *str, int start, int end);
 t_plist			*parse_input(const char *format, va_list ap);
 int				ft_putwchar(wchar_t c);
+char			*ft_getwchar(wchar_t c);
 int				ft_putwstr(wchar_t *s);
 int				ft_putwstrn(wchar_t *s, int n);
 char			*ft_max_itoabase(int base, intmax_t n, int isupper);
