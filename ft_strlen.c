@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 18:27:18 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 19:55:47 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 14:39:44 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ size_t	ft_wstrlen(const wchar_t *s)
 	length = 0;
 	while (s && s[count] != '\0')
 	{
-		count++;
 		length += ft_getbyteslength(s[count]);
+		count++;
 	}
 	return (length);
 }

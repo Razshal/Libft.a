@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 12:46:30 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 14:56:10 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void		number_controller(t_plist *list)
 	{
 		(ft_strchr(list->flag, '#'))[0] = 'n';
 		if (list->type == 'o')
-			list->precision++;
+			list->precision == -1 ? list->precision = 1 : list->precision++;
 	}
 	if (ft_strchr(list->flag, '0') && ft_strchr(list->flag, '-'))
 		(ft_strchr(list->flag, '0'))[0] = 'n';
