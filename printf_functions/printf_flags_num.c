@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/21 12:16:10 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 15:05:50 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ static int		futurespaces(t_plist *list, char zeroorspace)
 	int future_spaces;
 
 	future_spaces = 0;
-	if (ft_strchr(list->flag, '#') &&
-			!(is_octal_or_hex(list->type) && zeroorspace == ' '))
+	if (ft_strchr(list->flag, '#') && zeroorspace == ' ')
 	{
 		if (list->type == 'o')
 			future_spaces++;
