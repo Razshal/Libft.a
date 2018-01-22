@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 16:25:55 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 18:20:08 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
 		if (!align)
 			ft_strcat(newstr, list->arg);
 		count = ft_strlen(newstr);
-		while (toadd--)
+		while (toadd-- > 0)
 			newstr[count++] = c;
 		if (align)
 			ft_strcat(newstr, list->arg);
@@ -41,22 +41,29 @@ static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
 		ft_straddchar(list, 1, '-', 1);
 }
 
-static int		futurespaces(t_plist *list)
+static void		futurespaces(t_plist *list)
 {
 	int future_spaces;
+	char zeroorspace;
 
 	future_spaces = 0;
+	zeroorspace = (list->precision == -1 && list->width != 0 &&
+			ft_strchr(list->flag, '0') ? '0' : ' ');
 	if (ft_strchr(list->flag, '#'))
 	{
-		if (list->type == 'o')
-			future_spaces++;
-		else if (list->type == 'x' || list->type == 'X')
-			future_spaces += 2;
+		if (list->type == 'o' && list->precision > 1)
+			list->precision--;
+		else if (list->type == 'o' && ft_strchr(list->flag, '0') 
+				&& list->precision == -1)
+			list->width--;
+		else if ((list->type == 'x' || list->type == 'X') && zeroorspace == '0')
+			list->width -= 2;
 	}
 	if ((ft_strchr(list->flag, ' ') || ft_strchr(list->flag, '+'))
 			&& is_signed(list->type) && !(ft_strchr(list->arg, '-')))
-		future_spaces++;
-	return (future_spaces);
+		list->width--;
+	if (list->width < 0)
+		list->width = 0;
 }
 
 static void		plusflag(t_plist *list)
@@ -93,8 +100,8 @@ static void		width(t_plist *list, int rightalign)
 	if (is_octal_or_hex(list->type) && zeroorspace == ' ')
 		printf_flag_hash(list);
 	if (list->width != 0 && (size_t)list->width > ft_strlen(list->arg))
-		ft_straddchar(list, rightalign, zeroorspace, (size_t)list->width
-				- ft_strlen(list->arg) - futurespaces(list));
+		ft_straddchar(list, rightalign, zeroorspace, list->width
+				- (int)ft_strlen(list->arg));
 	if (is_octal_or_hex(list->type) && zeroorspace == '0')
 		printf_flag_hash(list);
 	plusflag(list);
@@ -105,6 +112,7 @@ void		printf_flags_num(t_plist *list)
 	int		rightalign;
 	int		isneg;
 
+	futurespaces(list);
 	if (list->type == '%' || list->arg == NULL)
 	{
 		if (list->type == '%')
@@ -124,7 +132,7 @@ void		printf_flags_num(t_plist *list)
 			&& (size_t)list->precision > (ft_strlen(list->arg) - isneg))
 	{
 		ft_straddchar(list, 1, '0', list->precision
-				- ft_strlen(list->arg) - futurespaces(list) + isneg);
+				- ft_strlen(list->arg) + isneg);
 	}
 	width(list, rightalign);
 }
