@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 15:05:50 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 15:52:22 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void		printf_flags_num(t_plist *list)
 	}
 	isneg = ((ft_strchr(list->arg, '-') != NULL));
 	rightalign = (ft_strchr(list->flag, '-') ? 0 : 1);
-	if (list->precision > -1
+	if (list->precision > -1 && !(list->type == '%')
 			&& (size_t)list->precision > (ft_strlen(list->arg) - isneg))
 	{
 		ft_straddchar(list, 1, '0', list->precision
