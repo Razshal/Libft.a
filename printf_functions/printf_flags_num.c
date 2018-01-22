@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 15:52:22 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 16:25:55 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
 		ft_straddchar(list, 1, '-', 1);
 }
 
-static int		futurespaces(t_plist *list, char zeroorspace)
+static int		futurespaces(t_plist *list)
 {
 	int future_spaces;
 
 	future_spaces = 0;
-	if (ft_strchr(list->flag, '#') && zeroorspace == ' ')
+	if (ft_strchr(list->flag, '#'))
 	{
 		if (list->type == 'o')
 			future_spaces++;
@@ -54,7 +54,7 @@ static int		futurespaces(t_plist *list, char zeroorspace)
 			future_spaces += 2;
 	}
 	if ((ft_strchr(list->flag, ' ') || ft_strchr(list->flag, '+'))
-			&& is_signed(list->type) && !(((char*)list->arg)[0] == '-'))
+			&& is_signed(list->type) && !(ft_strchr(list->arg, '-')))
 		future_spaces++;
 	return (future_spaces);
 }
@@ -94,7 +94,7 @@ static void		width(t_plist *list, int rightalign)
 		printf_flag_hash(list);
 	if (list->width != 0 && (size_t)list->width > ft_strlen(list->arg))
 		ft_straddchar(list, rightalign, zeroorspace, (size_t)list->width
-				- ft_strlen(list->arg) - futurespaces(list, zeroorspace));
+				- ft_strlen(list->arg) - futurespaces(list));
 	if (is_octal_or_hex(list->type) && zeroorspace == '0')
 		printf_flag_hash(list);
 	plusflag(list);
@@ -124,7 +124,7 @@ void		printf_flags_num(t_plist *list)
 			&& (size_t)list->precision > (ft_strlen(list->arg) - isneg))
 	{
 		ft_straddchar(list, 1, '0', list->precision
-				- ft_strlen(list->arg) + isneg);
+				- ft_strlen(list->arg) - futurespaces(list) + isneg);
 	}
 	width(list, rightalign);
 }
