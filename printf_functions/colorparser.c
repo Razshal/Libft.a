@@ -6,16 +6,18 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 19:04:37 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 19:59:11 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 20:06:23 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 #include <unistd.h>
 
-static char	*get_colorcode(char *s)
+static char	*get_colorcode(char *str)
 {
-	s++;
+	char *s;
+
+	s = &str[1];
 	if (!ft_strncmp(s, "RED}", 4))
 	return (ft_noleaks_strjoin("\x1b[31m", NULL));
 	if (!ft_strncmp(s, "GREEN}", 6))
@@ -63,5 +65,5 @@ int			colorprinter(char *str)
 		ft_putstr(str);
 		return (ft_strlen(str));
 	}
-	return (0);
+	return (written);
 }

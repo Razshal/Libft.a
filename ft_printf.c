@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 16:04:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 19:56:18 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/22 20:05:41 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int		chars_printer(t_plist *list)
 	else if (list->isrealarg && (list->type == 'c' || list->type == 'C'))
 		return (printf_flags_char(list));
 	else if (!list->isrealarg)
-		colorprinter(list->arg);
+		return (colorprinter(list->arg));
 	return (-1);
 }
 
