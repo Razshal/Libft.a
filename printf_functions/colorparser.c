@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 19:04:37 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 20:15:27 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/23 11:16:14 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*get_colorcode(char *str)
 
 	s = &str[1];
 	if (!ft_strncmp(s, "RED}", 4))
-	return (ft_noleaks_strjoin("\x1b[31m", NULL));
+		return (ft_noleaks_strjoin("\x1b[31m", NULL));
 	if (!ft_strncmp(s, "GREEN}", 6))
 		return (ft_noleaks_strjoin("\x1b[32m", NULL));
 	if (!ft_strncmp(s, "YELLOW}", 7))

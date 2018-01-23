@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:30:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 18:53:09 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/23 10:58:06 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,10 @@ static void		width(t_plist *list, int rightalign)
 {
 	char zeroorspace;
 
-	zeroorspace = (list->precision == -1 && list->width != 0 &&
-			ft_strchr(list->flag, '0') ? '0' : ' ');
+	zeroorspace = ((list->precision == -1 && list->width != 0 &&
+			ft_strchr(list->flag, '0')) || (list->type == '%'
+			&& list->width > (int)ft_strlen(list->arg)
+			&& ft_strchr(list->flag, '0')) ? '0' : ' ');
 	if (is_octal_or_hex(list->type) && zeroorspace == ' ')
 		printf_flag_hash(list);
 	if (list->width != 0 && (size_t)list->width > ft_strlen(list->arg))
@@ -112,18 +114,15 @@ void			printf_flags_num(t_plist *list)
 	int		isneg;
 
 	futurespaces(list);
-	if (list->type == '%' || list->arg == NULL)
+	if (list->type == '%')
 	{
-		if (list->type == '%')
-		{
-			list->arg = ft_strnew(1);
-			((char*)list->arg)[0] = '%';
-		}
-		else if (!list->arg)
-		{
-			list->arg = ft_strnew(1);
-			((char*)list->arg)[0] = '\0';
-		}
+		list->arg = ft_strnew(1);
+		((char*)list->arg)[0] = '%';
+	}
+	else if (!list->arg)
+	{
+		list->arg = ft_strnew(1);
+		((char*)list->arg)[0] = '\0';
 	}
 	isneg = ((ft_strchr(list->arg, '-') != NULL));
 	rightalign = (ft_strchr(list->flag, '-') ? 0 : 1);
