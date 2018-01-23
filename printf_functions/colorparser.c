@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 19:04:37 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/23 11:16:14 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/23 13:37:45 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,20 @@ int			colorprinter(char *str)
 	char	*colorcode;
 	int		written;
 
-	count = -1;
+	count = 0;
 	colorcode = NULL;
 	written = 0;
 	if (ft_strchr(str, '{') && get_colorcode(ft_strchr(str, '{')))
 	{
-		while (str[++count])
+		while (str[count])
 		{
 			if (!(str[count] == '{') && (++written))
-				ft_putchar(str[count]);
+				ft_putchar(str[count++]);
 			else if ((colorcode = get_colorcode(&str[count])))
 			{
 				written += write(1, colorcode, ft_strlen(colorcode));
-				count += ft_strlen(colorcode);
+				while (str[count] && str[count - 1] != '}')
+					count++;
 			}
 		}
 	}
