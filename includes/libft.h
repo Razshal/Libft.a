@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 19:56:13 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/24 11:14:17 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include <stdio.h>
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -101,7 +100,6 @@ char			*ft_strrev(char *str);
 char			*ft_strlowcase(char *str);
 char			*ft_strupcase(char *str);
 int				ft_sqrt(int nb);
-int				ft_factorial(int nb);
 int				ft_printf(const char *format, ...);
 
 typedef struct	s_plist

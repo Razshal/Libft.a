@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/01/22 19:58:20 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/01/24 11:18:47 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ PRINTFUNC = printf_functions/
 SRC = ft_atoi.c \
 	  ft_bzero.c \
 	  ft_countdigit.c \
-	  ft_factorial.c \
 	  ft_isalnum.c \
 	  ft_isalpha.c \
 	  ft_isascii.c \
@@ -81,13 +80,10 @@ SRC = ft_atoi.c \
 	  ft_tolower.c \
 	  ft_toupper.c \
 	  ft_printf.c \
-	  $(PRINTFUNC)printflstadd.c \
-	  $(PRINTFUNC)printfaddstr.c \
+	  $(PRINTFUNC)printf_lst.c \
 	  $(PRINTFUNC)printfparser.c \
 	  $(PRINTFUNC)printf_checks.c \
 	  $(PRINTFUNC)printf_checks2.c \
-	  $(PRINTFUNC)printflstnew.c \
-	  $(PRINTFUNC)printflstdel.c \
 	  $(PRINTFUNC)ischartype.c \
 	  $(PRINTFUNC)printf_types.c \
 	  $(PRINTFUNC)printf_flag_hash.c \
