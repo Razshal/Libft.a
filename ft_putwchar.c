@@ -6,11 +6,11 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 18:47:04 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 18:47:49 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/24 12:23:12 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printf/includes/libft.h"
+#include "includes/libft.h"
 #include <unistd.h>
 
 int		ft_putwchar(wchar_t c)
