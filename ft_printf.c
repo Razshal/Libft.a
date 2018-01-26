@@ -31,9 +31,6 @@ static int		chars_printer(t_plist *list)
 
 static void		number_controller(t_plist *list)
 {
-	int count;
-
-	count = 0;
 	if (ft_isupper(list->type) && list->type != 'X')
 	{
 		list->type = ft_tolower(list->type);

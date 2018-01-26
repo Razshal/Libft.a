@@ -68,10 +68,8 @@ char		*ft_umax_itoabase(int base, uintmax_t n, int isupper)
 {
 	char	*str;
 	int		size;
-	int		checkneg;
 	char	*tab;
 
-	checkneg = 0;
 	size = ft_umax_countdigit_base(n, base) - 1;
 	tab = base_table(isupper);
 	str = ft_strnew((size > 0 ? size : 1));

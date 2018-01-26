@@ -15,6 +15,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <inttypes.h>
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);

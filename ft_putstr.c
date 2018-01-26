@@ -29,5 +29,5 @@ int		ft_putstrn(char const *s, int n)
 		while (s[count] && count < n)
 			ft_putchar(s[count++]);
 	}
-	return ((size_t)count < ft_strlen(s) ? count : ft_strlen(s));
+	return ((size_t)count < ft_strlen(s) ? count : (int)ft_strlen(s));
 }
