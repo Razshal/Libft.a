@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/01/24 11:18:47 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/01/29 11:31:53 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SRC = ft_atoi.c \
 	  ft_strupcase.c \
 	  ft_tolower.c \
 	  ft_toupper.c \
+	  get_next_line.c \
 	  ft_printf.c \
 	  $(PRINTFUNC)printf_lst.c \
 	  $(PRINTFUNC)printfparser.c \
@@ -100,7 +101,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $^
-	@echo "libft.a ready"
+	@echo "libftprintf.a ready"
 
 %.o:	%.c
 	@$(CC) $(FLAGS) -o $@ -c $<

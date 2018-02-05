@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/24 11:14:17 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/01/29 11:31:30 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <inttypes.h>
+# define BUFF_SIZE 2048
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -93,6 +94,8 @@ void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void			ft_print_split(char **tab);
+void			ft_print_split_fd(char **tab, int fd);
+
 int				ft_ispace(char c);
 int				ft_countdigit(int n);
 int				ft_max_countdigit_base(intmax_t n, int base);
@@ -145,4 +148,11 @@ int				printf_flags_chars(t_plist *list);
 int				printf_flags_char(t_plist *list);
 int				ft_getbyteslength(wchar_t c);
 int				colorprinter(char *str);
+int				get_next_line(const int fd, char **line);
+typedef struct	s_fd
+{
+	int		fd;
+	char	*str;
+}				t_fd;
+
 #endif
