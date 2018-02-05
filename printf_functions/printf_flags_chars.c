@@ -15,10 +15,8 @@
 static int	writespaces(int spaces)
 {
 	int		count;
-	char	space;
 
 	count = 0;
-	space = ' ';
 	if (spaces > 0)
 	{
 		while (count++ < spaces)
@@ -29,6 +27,9 @@ static int	writespaces(int spaces)
 
 static int	goodstrlen(t_plist *list)
 {
+	intmax_t	c;
+
+	c = 0;
 	if (list->type == 'S' || (list->type == 's' && check_lconv(list)))
 		return ((int)ft_wstrlen(list->arg));
 	if (list->type == 's' && !check_lconv(list))
@@ -36,7 +37,10 @@ static int	goodstrlen(t_plist *list)
 	if (list->type == 'c' && !check_lconv(list))
 		return (1);
 	if (list->type == 'C' || (list->type == 'c' && check_lconv(list)))
-		return (ft_getbyteslength((wchar_t)list->arg));
+	{
+		c = (intmax_t)list->arg;
+		return (ft_getbyteslength(c));
+	}
 	return (0);
 }
 
@@ -71,18 +75,20 @@ int			printf_flags_chars(t_plist *list)
 
 int			printf_flags_char(t_plist *list)
 {
-	int written;
+	int			written;
+	intmax_t	arg;
 
+	arg = (intmax_t)list->arg;
 	written = 0;
 	if (!ft_strchr(list->flag, '-') && 1 < (size_t)list->width)
 		written += writespaces((size_t)list->width - 1);
 	if (list->type == 'c' && !check_lconv(list))
 	{
-		ft_putchar((char)list->arg);
+		ft_putchar(arg);
 		written += 1;
 	}
 	else
-		written += ft_putwchar((wchar_t)list->arg);
+		written += ft_putwchar(arg);
 	if (ft_strchr(list->flag, '-') && 1 < (size_t)list->width)
 		written += writespaces((size_t)list->width - 1);
 	return (written);

@@ -60,5 +60,5 @@ int			colorprinter(char *str)
 	}
 	else
 		ft_putstr(str);
-	return (written ? written : ft_strlen(str));
+	return (written ? written : (int)ft_strlen(str));
 }
