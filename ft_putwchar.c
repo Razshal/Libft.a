@@ -32,7 +32,8 @@ int		ft_putwchar(wchar_t c)
 		c = (c >> 6);
 		modifier = modifier >> 1;
 	}
-	bytes[0] = (192 + (16 * (length == 2 ? 0 : length - 1)) | (c & modifier));
+	bytes[0] = ((192 + (16 * (length == 2 ? 0 : length - 1)))
+		| (c & modifier));
 	bytes[length] = '\0';
 	bytesleft = 0;
 	while (bytesleft < length)
@@ -60,7 +61,8 @@ char	*ft_getwchar(wchar_t c)
 		c = (c >> 6);
 		modifier = modifier >> 1;
 	}
-	bytes[0] = (192 + (16 * (length == 2 ? 0 : length - 1)) | (c & modifier));
+	bytes[0] = ((192 + (16 * (length == 2 ? 0 : length - 1)))
+		| (c & modifier));
 	bytes[length] = '\0';
 	return (bytes);
 }

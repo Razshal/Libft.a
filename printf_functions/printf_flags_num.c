@@ -43,10 +43,8 @@ static void		ft_straddchar(t_plist *list, int align, char c, size_t toadd)
 
 static void		futurespaces(t_plist *list)
 {
-	int		future_spaces;
 	char	zeroorspace;
 
-	future_spaces = 0;
 	zeroorspace = (list->precision == -1 && list->width != 0 &&
 			ft_strchr(list->flag, '0') ? '0' : ' ');
 	if (ft_strchr(list->flag, '#'))
