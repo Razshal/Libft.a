@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/03/11 12:12:57 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/03/11 14:57:13 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ SRC = ft_atoi.c \
 	  $(PRINTFUNC)colorparser.c \
 	  ft_putwchar.c \
 	  ft_putwstr.c
+COPYPATH = ~/Projects/lem_in/libft
 
 OBJ = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror
@@ -104,6 +105,14 @@ $(NAME): $(OBJ)
 
 %.o:	%.c
 	@$(CC) $(FLAGS) -o $@ -c $<
+
+copy:
+	@mkdir $(COPYPATH)
+	@cp *.c $(COPYPATH)
+	@cp Makefile $(COPYPATH)
+	@cp -R $(PRINTFUNC) $(COPYPATH)/$(PRINTFUNC)
+	@cp -R includes $(COPYPATH)
+	@cp auteur $(COPYPATH)
 
 clean:
 	@rm -f $(OBJ)
