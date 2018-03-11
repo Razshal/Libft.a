@@ -6,13 +6,12 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/01/29 11:31:53 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/03/11 12:12:57 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = libft.a
 PRINTFUNC = printf_functions/
-
 SRC = ft_atoi.c \
 	  ft_bzero.c \
 	  ft_countdigit.c \
@@ -101,7 +100,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $^
-	@echo "libftprintf.a ready"
+	@echo "libft.a ready"
 
 %.o:	%.c
 	@$(CC) $(FLAGS) -o $@ -c $<
