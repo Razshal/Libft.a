@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 19:21:34 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/03/16 17:48:21 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/03/16 17:56:32 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_memdel(void **ap)
 void	ft_memdel_array(void **ap)
 {
 	int count;
+
+	count = 0;
 	while (ap && ap[count])
 	{
 		free(ap[count]);
