@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 19:21:34 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/03/16 18:03:14 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/03/21 15:20:24 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,4 @@ void	ft_memdel(void **ap)
 		free(*ap);
 		*ap = NULL;
 	}
-}
-
-void	ft_memdel_array(void ***ap)
-{
-	int count;
-
-	count = 0;
-	while (*ap && *ap[count])
-	{
-		free(*ap[count]);
-		*ap[count++] = NULL;
-	}
-	free(*ap);
-	*ap = NULL;
 }

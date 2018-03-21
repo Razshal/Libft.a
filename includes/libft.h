@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:11:55 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/03/19 13:51:49 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/03/21 15:20:43 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 void			*ft_memalloc(size_t size);
 void			*ft_memdel(void **ap);
-void			*ft_memdel_array(void ***ap);
 char			*ft_strnew(size_t size);
 wchar_t			*ft_wstrnew(size_t size);
 void			ft_strdel(char **as);
