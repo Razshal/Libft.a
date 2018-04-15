@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 15:55:23 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/03/15 15:59:20 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/04/15 17:24:23 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ static int	fill_array(const char *str, char **array, char c)
 				return (0);
 			while ((str[cursor] != c) && str[cursor])
 				array[c1][c2++] = str[cursor++];
-			array[c1][c2] = '\0';
-			c1++;
+			array[c1++][c2] = '\0';
 			c2 = 0;
 		}
 		else
