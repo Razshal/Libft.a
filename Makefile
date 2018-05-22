@@ -6,7 +6,7 @@
 #    By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:15:51 by mfonteni          #+#    #+#              #
-#    Updated: 2018/03/13 18:08:35 by mfonteni         ###   ########.fr        #
+#    Updated: 2018/05/22 13:44:32 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,7 @@ SRC = ft_atoi.c \
 	  $(PRINTFUNC)colorparser.c \
 	  ft_putwchar.c \
 	  ft_putwstr.c
-COPYPATH = ~/Projects/lem_in/libft
+COPYPATH = ~/Projects/corewar2/libft
 
 OBJ = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror
