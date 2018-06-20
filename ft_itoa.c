@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 12:07:57 by mfonteni          #+#    #+#             */
-/*   Updated: 2018/01/22 18:46:30 by mfonteni         ###   ########.fr       */
+/*   Updated: 2018/06/20 16:39:22 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,37 +42,21 @@ char		*ft_itoa(int n)
 	return (str);
 }
 
-static char	*base_table(int isupper)
-{
-	char	*tab;
-	int		count;
-
-	tab = ft_strnew(17);
-	count = 0;
-	tab[0] = count++ + '0';
-	while (count < 10)
-	{
-		tab[count] = count + '0';
-		count++;
-	}
-	while (count < 16)
-	{
-		tab[count] = (isupper ? 'A' : 'a') + (count - 10);
-		count++;
-	}
-	tab[count] = '\0';
-	return (tab);
-}
-
 char		*ft_umax_itoabase(int base, uintmax_t n, int isupper)
 {
 	char	*str;
 	int		size;
-	char	*tab;
+	char	tab[17];
+	int		count;
 
+	count = -1;
 	size = ft_umax_countdigit_base(n, base) - 1;
-	tab = base_table(isupper);
-	str = ft_strnew((size > 0 ? size : 1));
+	while (++count < 10)
+		tab[count] = count + '0';
+	while (++count < 16)
+		tab[count] = (isupper ? 'A' : 'a') + (count - 10);
+	tab[count] = '\0';
+	str = ft_strnew(size > 0 ? size : 1);
 	if (str)
 		str[0] = '0';
 	while (str && n)
@@ -80,7 +64,6 @@ char		*ft_umax_itoabase(int base, uintmax_t n, int isupper)
 		str[--size] = tab[n % base];
 		n = n / base;
 	}
-	free(tab);
 	return (str);
 }
 
@@ -88,15 +71,18 @@ char		*ft_max_itoabase(int base, intmax_t n, int isupper)
 {
 	char		*str;
 	int			size;
-	char		*tab;
+	char		tab[17];
 	uintmax_t	num;
 
-	size = ft_max_countdigit_base(n, base) - 1;
-	tab = base_table(isupper);
+	size = -1;
+	while (++size < 10)
+		tab[size] = size + '0';
+	while (++size < 16)
+		tab[size] = (isupper ? 'A' : 'a') + (size - 10);
+	tab[size] = '\0';
 	num = (n > 0 ? n : -n);
-	if (n < 0)
-		size++;
-	str = ft_strnew((size > 0 ? size : 1));
+	size = ft_max_countdigit_base(n, base) - 1 + (n < 0 ? 1 : 0);
+	str = ft_strnew(size > 0 ? size : 1);
 	(str ? str[0] = '0' : 0);
 	if (str && n < 0)
 		str[0] = '-';
@@ -105,6 +91,5 @@ char		*ft_max_itoabase(int base, intmax_t n, int isupper)
 		str[--size] = tab[num % base];
 		num = num / base;
 	}
-	free(tab);
 	return (str);
 }
